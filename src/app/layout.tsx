@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import {
-  Barlow_Condensed,
-  DM_Sans,
-  IBM_Plex_Sans,
+  Space_Grotesk,
+  Plus_Jakarta_Sans,
+  Inter,
   JetBrains_Mono,
 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
@@ -10,22 +10,22 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toast } from "@/components/ui/Toast";
 import "./globals.css";
 
-const barlowCondensed = Barlow_Condensed({
-  variable: "--font-barlow-condensed",
-  subsets: ["latin"],
-  weight: ["400", "600", "700", "800", "900"],
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const ibmPlexSans = IBM_Plex_Sans({
-  variable: "--font-ibm-plex-sans",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   display: "swap",
@@ -96,7 +96,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${barlowCondensed.variable} ${dmSans.variable} ${ibmPlexSans.variable} ${jetbrainsMono.variable} antialiased`}
+      className={`${spaceGrotesk.variable} ${plusJakartaSans.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
     >
       <body className="min-h-dvh">
         {children}

@@ -34,10 +34,13 @@
   --color-ink: #1C1C1E;
 
   /* ── Typography ── */
-  --font-display: var(--font-barlow-condensed);
-  --font-heading: var(--font-dm-sans);
-  --font-body: var(--font-ibm-plex-sans);
+  --font-display: var(--font-space-grotesk);
+  --font-heading: var(--font-plus-jakarta);
+  --font-body: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
+
+  /* ── Spotlight animation ── */
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
 }
 
 :root {
@@ -101,6 +104,30 @@ body {
   0% { stroke-dashoffset: 1000; opacity: 0.3; }
   50% { opacity: 0.8; }
   100% { stroke-dashoffset: 0; opacity: 0.3; }
+}
+
+/* ── Spotlight animation (Aceternity) ── */
+@keyframes spotlight {
+  0% { opacity: 0; transform: translate(-72%, -62%) scale(0.5); }
+  100% { opacity: 1; transform: translate(-50%, -40%) scale(1); }
+}
+
+.animate-spotlight {
+  animation: spotlight 2s ease 0.75s 1 forwards;
+}
+
+/* ── Spline loader spinner ── */
+.loader {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--color-steel);
+  border-top-color: var(--color-ember);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 /* Scrollbar */
