@@ -16,12 +16,15 @@ export function JORWordmark({
     variant === "light" ? "/jor-logo-white.webp" : "/jor-logo-dark.webp";
   const alt = "JOR — Just On Road";
 
+  // Dark logo is 433x90 (~4.8:1), white logo is 379x411 (~0.92:1 but displayed as wordmark)
+  const aspectRatio = variant === "dark" ? 0.21 : 0.33;
+
   return (
     <Image
       src={src}
       alt={alt}
       width={width}
-      height={Math.round(width * 0.33)}
+      height={Math.round(width * aspectRatio)}
       className={cn("h-auto w-auto object-contain", className)}
       priority
     />
