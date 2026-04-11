@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import {
@@ -217,9 +218,13 @@ export function Hero() {
                   {/* App header */}
                   <div className="border-b border-steel/20 px-6 pb-4">
                     <div className="flex items-center justify-between">
-                      <span className="font-display text-xl font-black uppercase tracking-wide text-ember">
-                        JOR
-                      </span>
+                      <Image
+                        src="/jor-logo-white.webp"
+                        alt="JOR"
+                        width={60}
+                        height={20}
+                        className="h-5 w-auto object-contain"
+                      />
                       <div className="flex items-center gap-1.5 rounded-full bg-verified/10 px-2.5 py-1 text-verified">
                         <span className="relative flex h-2 w-2">
                           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-verified/50" />

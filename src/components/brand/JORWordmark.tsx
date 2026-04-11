@@ -1,33 +1,29 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface JORWordmarkProps {
   className?: string;
   variant?: "light" | "dark";
+  width?: number;
 }
 
-export function JORWordmark({ className, variant = "light" }: JORWordmarkProps) {
-  const fill = variant === "light" ? "#FFFFFF" : "#080808";
+export function JORWordmark({
+  className,
+  variant = "light",
+  width = 120,
+}: JORWordmarkProps) {
+  const src =
+    variant === "light" ? "/jor-logo-white.webp" : "/jor-logo-dark.webp";
+  const alt = "JOR — Just On Road";
 
   return (
-    <svg
-      viewBox="0 0 120 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={cn("h-8 w-auto", className)}
-      aria-label="JOR"
-    >
-      <text
-        x="0"
-        y="32"
-        fontFamily="var(--font-barlow-condensed), sans-serif"
-        fontWeight="900"
-        fontSize="38"
-        letterSpacing="2"
-        fill={fill}
-      >
-        JOR
-      </text>
-      <rect x="85" y="28" width="20" height="4" rx="2" fill="#FF8C00" />
-    </svg>
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={Math.round(width * 0.33)}
+      className={cn("h-auto w-auto object-contain", className)}
+      priority
+    />
   );
 }
