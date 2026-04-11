@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -61,14 +62,14 @@ function DropdownMenu({ children, isOpen }: DropdownMenuProps) {
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-52 rounded-xl border border-steel/30 bg-obsidian/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.6)] overflow-hidden"
+          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-52 rounded-xl border border-steel/20 bg-offwhite/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] overflow-hidden"
         >
           <div className="py-1.5">
             {children.map((child) => (
               <Link
                 key={child.label}
                 href={child.href}
-                className="flex items-center px-4 py-2.5 font-heading text-sm text-silver hover:text-white hover:bg-white/5 transition-colors duration-150"
+                className="flex items-center px-4 py-2.5 font-heading text-sm text-smoke hover:text-ink hover:bg-ember/5 transition-colors duration-150"
               >
                 {child.label}
               </Link>
@@ -111,7 +112,7 @@ function DesktopNavItem({ link, isActive }: DesktopNavItemProps) {
           onClick={() => setDropdownOpen((prev) => !prev)}
           className={cn(
             "flex items-center gap-1 font-heading text-sm font-medium transition-colors duration-200",
-            isActive ? "text-white" : "text-silver hover:text-white"
+            isActive ? "text-ink" : "text-smoke hover:text-ink"
           )}
           aria-expanded={dropdownOpen}
           aria-haspopup="true"
@@ -135,7 +136,7 @@ function DesktopNavItem({ link, isActive }: DesktopNavItemProps) {
       href={link.href}
       className={cn(
         "relative font-heading text-sm font-medium transition-colors duration-200 pb-0.5",
-        isActive ? "text-white" : "text-silver hover:text-white",
+        isActive ? "text-ink" : "text-smoke hover:text-ink",
         "group"
       )}
     >
@@ -194,15 +195,22 @@ export function NavBar() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           scrolled
-            ? "backdrop-blur-xl bg-void/80 border-b border-steel/30"
-            : "bg-transparent border-b border-transparent"
+            ? "backdrop-blur-xl bg-offwhite/90 border-b border-cream shadow-[0_1px_20px_rgba(0,0,0,0.04)]"
+            : "bg-offwhite/70 backdrop-blur-md border-b border-transparent"
         )}
         style={{ height: "72px" }}
       >
         <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-6 lg:px-8">
-          {/* Left: Logo */}
-          <Link href="/" className="flex items-center shrink-0" aria-label="JOR Home">
-            <JORWordmark className="h-7 w-auto" />
+          {/* Left: Logo + Icon */}
+          <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label="JOR Home">
+            <Image
+              src="/jor-icon.webp"
+              alt=""
+              width={32}
+              height={32}
+              className="h-8 w-8 rounded-lg"
+            />
+            <JORWordmark variant="dark" className="h-6 w-auto" />
           </Link>
 
           {/* Center: Desktop Nav */}
@@ -226,16 +234,16 @@ export function NavBar() {
           {/* Right: CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
             <Link href="/signin">
-              <Button variant="ghost" size="sm">Sign In</Button>
+              <Button variant="ghost" size="sm" className="text-smoke hover:text-ink">Sign In</Button>
             </Link>
             <Link href="/early-access">
-              <Button variant="ember" size="sm">Get Early Access →</Button>
+              <Button variant="ember" size="sm">Get Early Access</Button>
             </Link>
           </div>
 
           {/* Mobile: Hamburger */}
           <button
-            className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg text-silver hover:text-white hover:bg-white/5 transition-colors duration-200"
+            className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg text-smoke hover:text-ink hover:bg-ink/5 transition-colors duration-200"
             onClick={() => setMobileOpen((prev) => !prev)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
@@ -275,7 +283,7 @@ export function NavBar() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 z-40 flex flex-col bg-void/97 backdrop-blur-2xl pt-[72px]"
+            className="fixed inset-0 z-40 flex flex-col bg-offwhite/97 backdrop-blur-2xl pt-[72px]"
             aria-label="Mobile navigation"
           >
             <nav className="flex flex-col gap-1 px-6 pt-8 pb-6 overflow-y-auto flex-1">
@@ -289,8 +297,8 @@ export function NavBar() {
                           setMobileDropdownOpen((prev) => !prev)
                         }
                         className={cn(
-                          "flex items-center justify-between py-3.5 font-heading text-lg font-medium transition-colors duration-200 border-b border-steel/20",
-                          hasActive ? "text-white" : "text-silver"
+                          "flex items-center justify-between py-3.5 font-heading text-lg font-medium transition-colors duration-200 border-b border-cream",
+                          hasActive ? "text-ink" : "text-smoke"
                         )}
                       >
                         {link.label}
@@ -316,10 +324,10 @@ export function NavBar() {
                                 key={child.label}
                                 href={child.href}
                                 className={cn(
-                                  "flex items-center py-3 pl-4 font-heading text-base transition-colors duration-150 border-b border-steel/10",
+                                  "flex items-center py-3 pl-4 font-heading text-base transition-colors duration-150 border-b border-cream/50",
                                   isActive(child.href)
-                                    ? "text-white"
-                                    : "text-smoke hover:text-silver"
+                                    ? "text-ink"
+                                    : "text-smoke hover:text-ink"
                                 )}
                               >
                                 {child.label}
@@ -337,10 +345,10 @@ export function NavBar() {
                     key={link.label}
                     href={link.href}
                     className={cn(
-                      "flex items-center py-3.5 font-heading text-lg font-medium transition-colors duration-200 border-b border-steel/20",
+                      "flex items-center py-3.5 font-heading text-lg font-medium transition-colors duration-200 border-b border-cream",
                       isActive(link.href)
-                        ? "text-white"
-                        : "text-silver hover:text-white"
+                        ? "text-ink"
+                        : "text-smoke hover:text-ink"
                     )}
                   >
                     {link.label}
@@ -355,10 +363,10 @@ export function NavBar() {
             {/* Mobile CTA */}
             <div className="flex flex-col gap-3 px-6 pb-10">
               <Link href="/signin" className="w-full">
-                <Button variant="outline" size="md" fullWidth>Sign In</Button>
+                <Button variant="outline" size="md" fullWidth className="border-steel/30 text-ink">Sign In</Button>
               </Link>
               <Link href="/early-access" className="w-full">
-                <Button variant="ember" size="md" fullWidth>Get Early Access →</Button>
+                <Button variant="ember" size="md" fullWidth>Get Early Access</Button>
               </Link>
             </div>
           </motion.div>

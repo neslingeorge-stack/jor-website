@@ -1,30 +1,39 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-void: #080808;
-  --color-obsidian: #0F0F0F;
-  --color-carbon: #161616;
-  --color-graphite: #222222;
-  --color-steel: #333333;
+  /* ── Dark palette (charcoal, not pure black) ── */
+  --color-void: #1C1C1E;
+  --color-obsidian: #232326;
+  --color-carbon: #2A2A2E;
+  --color-graphite: #333338;
+  --color-steel: #44444A;
 
+  /* ── Light palette ── */
+  --color-offwhite: #F5F3EF;
+  --color-cream: #EDE9E3;
+  --color-chalk: #FAFAFA;
+  --color-cloud: #F2F2F2;
+  --color-mist: #E8E8E8;
+
+  /* ── Brand accents ── */
   --color-ember: #FF8C00;
   --color-flame: #FF6B00;
   --color-glow: rgba(255, 140, 0, 0.15);
   --color-amber: #F5A623;
 
-  --color-chalk: #FAFAFA;
-  --color-cloud: #F2F2F2;
-  --color-mist: #E8E8E8;
-
+  /* ── Status ── */
   --color-verified: #10B981;
   --color-alert: #EF4444;
   --color-pending: #F59E0B;
   --color-info: #3B82F6;
 
+  /* ── Text ── */
   --color-white: #FFFFFF;
   --color-silver: #A8A8A8;
   --color-smoke: #666666;
+  --color-ink: #1C1C1E;
 
+  /* ── Typography ── */
   --font-display: var(--font-barlow-condensed);
   --font-heading: var(--font-dm-sans);
   --font-body: var(--font-ibm-plex-sans);
@@ -44,6 +53,54 @@ body {
   font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── 3D perspective for immersive sections ── */
+.perspective-container {
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+
+/* ── Gradient mesh background utility ── */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-gradient-mesh {
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+/* ── Floating 3D animation ── */
+@keyframes float-3d {
+  0%, 100% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
+  25% { transform: translateY(-12px) rotateX(2deg) rotateY(-2deg); }
+  50% { transform: translateY(-20px) rotateX(0deg) rotateY(3deg); }
+  75% { transform: translateY(-8px) rotateX(-2deg) rotateY(-1deg); }
+}
+
+.animate-float-3d {
+  animation: float-3d 8s ease-in-out infinite;
+}
+
+/* ── Blob morph ── */
+@keyframes blob-morph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50% { border-radius: 50% 60% 30% 60% / 30% 50% 70% 50%; }
+  75% { border-radius: 60% 30% 60% 40% / 70% 40% 50% 60%; }
+}
+
+.animate-blob-morph {
+  animation: blob-morph 12s ease-in-out infinite;
+}
+
+/* ── Flowing line pulse ── */
+@keyframes flow-pulse {
+  0% { stroke-dashoffset: 1000; opacity: 0.3; }
+  50% { opacity: 0.8; }
+  100% { stroke-dashoffset: 0; opacity: 0.3; }
 }
 
 /* Scrollbar */

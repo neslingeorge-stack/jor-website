@@ -14,15 +14,16 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { LivePulse } from "@/components/ui/LivePulse";
-import { GlowOrb } from "@/components/effects/GlowOrb";
-import { RoadGridBg } from "@/components/effects/RoadGridBg";
-import { NoiseTexture } from "@/components/effects/NoiseTexture";
+import { FlowingLines } from "@/components/effects/FlowingLines";
+import { FloatingBlob } from "@/components/effects/FloatingBlob";
+import { GradientMesh } from "@/components/effects/GradientMesh";
+import { ParticleField } from "@/components/effects/ParticleField";
 
 const TRUST_TAG_COLOR_MAP: Record<string, string> = {
-  verified: "bg-verified/15 text-verified border-verified/25",
-  info: "bg-info/15 text-info border-info/25",
-  amber: "bg-amber/15 text-amber border-amber/25",
-  ember: "bg-ember/15 text-ember border-ember/25",
+  verified: "bg-verified/10 text-verified border-verified/20",
+  info: "bg-info/10 text-info border-info/20",
+  amber: "bg-amber/10 text-amber border-amber/20",
+  ember: "bg-ember/10 text-ember border-ember/20",
 };
 
 const TRUST_DOT_MAP: Record<string, string> = {
@@ -33,50 +34,56 @@ const TRUST_DOT_MAP: Record<string, string> = {
 };
 
 export function Hero() {
-
   return (
     <section
       className={cn(
         "relative h-dvh w-full overflow-hidden",
-        "bg-void"
+        "bg-offwhite"
       )}
       aria-label="Hero section"
     >
-      {/* Background layers — z-ordered */}
-      <RoadGridBg />
+      {/* ── Background layers ── */}
 
-      {/* GlowOrb: top-right ember */}
-      <GlowOrb
-        position="top-right"
-        color="ember"
+      {/* Gradient mesh — subtle warm tones */}
+      <GradientMesh variant="warm" />
+
+      {/* Flowing animated lines */}
+      <FlowingLines variant="light" />
+
+      {/* Floating morphing blobs */}
+      <FloatingBlob
+        className="top-[-10%] right-[-5%]"
+        color="rgba(255,140,0,0.05)"
         size="600px"
-        blur="200px"
-        opacity="0.12"
+        delay="0s"
+      />
+      <FloatingBlob
+        className="bottom-[-15%] left-[-10%]"
+        color="rgba(245,166,35,0.04)"
+        size="500px"
+        delay="-4s"
+      />
+      <FloatingBlob
+        className="top-[40%] left-[60%]"
+        color="rgba(255,107,0,0.03)"
+        size="300px"
+        delay="-8s"
       />
 
-      {/* GlowOrb: bottom-left amber */}
-      <GlowOrb
-        position="bottom-left"
-        color="amber"
-        size="400px"
-        blur="150px"
-        opacity="0.08"
-      />
+      {/* Particle network */}
+      <ParticleField color="rgba(255,140,0,0.5)" count={25} className="z-[1]" />
 
-      {/* Noise texture */}
-      <NoiseTexture opacity="0.04" />
-
-      {/* Radial vignette */}
+      {/* Soft radial vignette */}
       <div
-        className="pointer-events-none absolute inset-0 z-[1]"
+        className="pointer-events-none absolute inset-0 z-[2]"
         style={{
           background:
-            "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, rgba(8,8,8,0.85) 100%)",
+            "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, rgba(245,243,239,0.7) 100%)",
         }}
         aria-hidden="true"
       />
 
-      {/* Main content — sits above background layers */}
+      {/* ── Main content ── */}
       <div className="relative z-10 flex h-full flex-col">
         <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 py-20 lg:px-10">
           <div className="grid items-center gap-16 lg:grid-cols-2">
@@ -89,13 +96,13 @@ export function Hero() {
             >
               {/* Eyebrow badge */}
               <motion.div variants={fadeInDown}>
-                <Badge variant="live">
+                <Badge variant="live" className="bg-ember/10 text-ember border-ember/20">
                   <LivePulse color="ember" />
                   {HERO.eyebrow}
                 </Badge>
               </motion.div>
 
-              {/* H1 headline */}
+              {/* H1 headline — dark text on light bg */}
               <div className="flex flex-col gap-1" aria-label="JOR Headline">
                 {HERO.headline.map((word, i) => {
                   const isLast = i === HERO.headline.length - 1;
@@ -110,7 +117,7 @@ export function Hero() {
                           "block font-display font-black uppercase leading-[0.92] tracking-tight",
                           isLast
                             ? "italic text-ember"
-                            : "text-white"
+                            : "text-ink"
                         )}
                         style={{
                           fontSize: "var(--text-display-xl)",
@@ -123,10 +130,10 @@ export function Hero() {
                 })}
               </div>
 
-              {/* Subheadline */}
+              {/* Subheadline — dark muted text */}
               <motion.p
                 variants={fadeUp}
-                className="max-w-[480px] font-body text-lg leading-relaxed text-silver"
+                className="max-w-[480px] font-body text-lg leading-relaxed text-smoke"
               >
                 {HERO.subheadline}
               </motion.p>
@@ -142,13 +149,13 @@ export function Hero() {
                     className={cn(
                       "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-heading font-medium",
                       TRUST_TAG_COLOR_MAP[tag.color] ??
-                        "bg-graphite/50 text-silver border-steel/30"
+                        "bg-steel/10 text-smoke border-steel/20"
                     )}
                   >
                     <span
                       className={cn(
                         "h-1.5 w-1.5 rounded-full",
-                        TRUST_DOT_MAP[tag.color] ?? "bg-silver"
+                        TRUST_DOT_MAP[tag.color] ?? "bg-smoke"
                       )}
                     />
                     {tag.label}
@@ -165,45 +172,62 @@ export function Hero() {
                   {HERO.ctaPrimary}
                   <ArrowRight className="h-4 w-4" />
                 </Button>
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="lg" className="border-steel/30 text-ink hover:bg-ink/5">
                   {HERO.ctaSecondary}
                 </Button>
               </motion.div>
             </motion.div>
 
-            {/* ── RIGHT COLUMN — Phone mockup ── */}
+            {/* ── RIGHT COLUMN — 3D Phone mockup ── */}
             <motion.div
               variants={fadeInRight}
               initial="initial"
               animate="animate"
-              className="hidden items-center justify-center lg:flex"
+              className="hidden items-center justify-center lg:flex perspective-container"
             >
               <motion.div
-                initial={{ y: 0, rotate: -3 }}
+                initial={{ y: 0, rotateX: 4, rotateY: -8 }}
                 animate={{
                   y: [0, -18, 0],
-                  rotate: -3,
+                  rotateX: [4, 2, 4],
+                  rotateY: [-8, -4, -8],
                   transition: {
                     y: {
-                      duration: 4,
+                      duration: 6,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    },
+                    rotateX: {
+                      duration: 6,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    },
+                    rotateY: {
+                      duration: 6,
                       repeat: Infinity,
                       ease: "easeInOut",
                     },
                   },
                 }}
                 whileHover={{
-                  rotate: 0,
-                  transition: { duration: 0.4 },
+                  rotateX: 0,
+                  rotateY: 0,
+                  scale: 1.03,
+                  transition: { duration: 0.5, ease: "easeOut" },
                 }}
                 className="relative cursor-default"
+                style={{ transformStyle: "preserve-3d" }}
               >
-                {/* Phone frame */}
+                {/* Phone frame — dark phone on light background */}
                 <div
                   className={cn(
-                    "relative w-[320px] overflow-hidden rounded-[40px] border border-steel/40 bg-carbon shadow-2xl",
-                    "before:pointer-events-none before:absolute before:inset-0 before:rounded-[40px] before:bg-gradient-to-br before:from-white/[0.04] before:to-transparent"
+                    "relative w-[320px] overflow-hidden rounded-[40px] border border-steel/20 bg-carbon shadow-[0_30px_80px_-20px_rgba(28,28,30,0.3),0_10px_40px_-10px_rgba(255,140,0,0.08)]",
+                    "before:pointer-events-none before:absolute before:inset-0 before:rounded-[40px] before:bg-gradient-to-br before:from-white/[0.06] before:to-transparent"
                   )}
-                  style={{ height: "620px" }}
+                  style={{
+                    height: "620px",
+                    transformStyle: "preserve-3d",
+                  }}
                   role="img"
                   aria-label="JOR app mockup showing a driver job card"
                 >
@@ -336,15 +360,39 @@ export function Hero() {
                   </div>
                 </div>
 
-                {/* Floating glow underneath phone */}
+                {/* 3D Floating shadow underneath phone */}
                 <div
-                  className="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2"
+                  className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2"
                   style={{
-                    width: "280px",
-                    height: "60px",
-                    background: "radial-gradient(ellipse, rgba(255,140,0,0.2) 0%, transparent 70%)",
-                    filter: "blur(16px)",
+                    width: "260px",
+                    height: "40px",
+                    background: "radial-gradient(ellipse, rgba(28,28,30,0.15) 0%, transparent 70%)",
+                    filter: "blur(20px)",
+                    transform: "translateX(-50%) rotateX(60deg)",
                   }}
+                  aria-hidden="true"
+                />
+
+                {/* Floating 3D accent rings */}
+                <motion.div
+                  className="pointer-events-none absolute -top-6 -right-8 h-20 w-20 rounded-full border border-ember/15"
+                  animate={{
+                    y: [0, -10, 0],
+                    rotate: [0, 90, 180],
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                  style={{ transformStyle: "preserve-3d", transform: "rotateX(60deg)" }}
+                  aria-hidden="true"
+                />
+                <motion.div
+                  className="pointer-events-none absolute -bottom-4 -left-6 h-14 w-14 rounded-full border border-amber/10"
+                  animate={{
+                    y: [0, 8, 0],
+                    rotate: [180, 90, 0],
+                  }}
+                  transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                  style={{ transformStyle: "preserve-3d", transform: "rotateX(50deg)" }}
                   aria-hidden="true"
                 />
               </motion.div>
@@ -374,12 +422,12 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Bottom gradient fade → obsidian */}
+      {/* Bottom gradient fade → charcoal (void) */}
       <div
-        className="pointer-events-none absolute bottom-0 left-0 right-0 z-20 h-32"
+        className="pointer-events-none absolute bottom-0 left-0 right-0 z-20 h-40"
         style={{
           background:
-            "linear-gradient(to bottom, transparent 0%, #0F0F0F 100%)",
+            "linear-gradient(to bottom, transparent 0%, #1C1C1E 100%)",
         }}
         aria-hidden="true"
       />

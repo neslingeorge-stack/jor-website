@@ -8,8 +8,8 @@ export function Toast() {
       position="bottom-right"
       toastOptions={{
         style: {
-          background: "#161616",
-          border: "1px solid #333333",
+          background: "#2A2A2E",
+          border: "1px solid #44444A",
           color: "#FFFFFF",
           fontFamily: "var(--font-dm-sans)",
         },

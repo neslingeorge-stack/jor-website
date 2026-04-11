@@ -39,8 +39,8 @@ const SERVICE_DATA = [
 ];
 
 const chartTooltipStyle = {
-  backgroundColor: "#161616",
-  border: "1px solid #333333",
+  backgroundColor: "#2A2A2E",
+  border: "1px solid #44444A",
   borderRadius: "8px",
   color: "#FFFFFF",
   fontSize: "12px",

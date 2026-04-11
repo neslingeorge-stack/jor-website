@@ -52,7 +52,7 @@ const STEP_ICONS = [Clipboard, Brain, CheckCircle] as const;
 
 function PostJobMockup() {
   return (
-    <div className="rounded-xl border border-steel/20 bg-[#0F0F0F] p-5 space-y-3">
+    <div className="rounded-xl border border-steel/20 bg-obsidian p-5 space-y-3">
       {/* Header bar */}
       <div className="flex items-center gap-2 pb-2 border-b border-steel/20">
         <div className="h-2 w-2 rounded-full bg-ember" />
@@ -119,7 +119,7 @@ function PostJobMockup() {
 
 function MatchingMockup() {
   return (
-    <div className="rounded-xl border border-steel/20 bg-[#0F0F0F] p-5 space-y-3">
+    <div className="rounded-xl border border-steel/20 bg-obsidian p-5 space-y-3">
       {/* Header */}
       <div className="flex items-center gap-2 pb-2 border-b border-steel/20">
         <motion.div
@@ -183,7 +183,7 @@ function MatchingMockup() {
 
 function ConfirmationMockup() {
   return (
-    <div className="rounded-xl border border-steel/20 bg-[#0F0F0F] p-5 space-y-3">
+    <div className="rounded-xl border border-steel/20 bg-obsidian p-5 space-y-3">
       {/* Header */}
       <div className="flex items-center gap-2 pb-2 border-b border-steel/20">
         <div className="h-2 w-2 rounded-full bg-verified" />
