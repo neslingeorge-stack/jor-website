@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { fadeUp } from "@/lib/animations";
+import { ShaderMesh } from "@/components/ui/shader-gradient";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -19,7 +20,7 @@ interface PostJobFormProps {
 
 function PostJobForm({ onFind, disabled }: PostJobFormProps) {
   return (
-    <div className="rounded-2xl border border-steel/30 bg-carbon p-6 space-y-5">
+    <div className="rounded-2xl border border-steel/30 bg-white p-6 space-y-5">
       <div>
         <p className="font-heading text-sm font-semibold text-smoke uppercase tracking-widest mb-4">
           Post a Job
@@ -33,7 +34,7 @@ function PostJobForm({ onFind, disabled }: PostJobFormProps) {
         </label>
         <div className="relative">
           <select
-            className="w-full appearance-none rounded-lg border border-steel/30 bg-graphite/50 px-3 py-2.5 font-body text-sm text-silver focus:border-ember/50 focus:outline-none focus:ring-1 focus:ring-ember/30"
+            className="w-full appearance-none rounded-lg border border-steel/30 bg-graphite/50 px-3 py-2.5 font-body text-sm text-smoke focus:border-ember/50 focus:outline-none focus:ring-1 focus:ring-ember/30"
             defaultValue="heavy"
           >
             <option value="heavy">Heavy Truck · 12-Wheeler</option>
@@ -57,7 +58,7 @@ function PostJobForm({ onFind, disabled }: PostJobFormProps) {
         <input
           type="text"
           defaultValue="Peenya Industrial Area, Bangalore"
-          className="w-full rounded-lg border border-steel/30 bg-graphite/50 px-3 py-2.5 font-body text-sm text-silver placeholder:text-smoke focus:border-ember/50 focus:outline-none focus:ring-1 focus:ring-ember/30"
+          className="w-full rounded-lg border border-steel/30 bg-graphite/50 px-3 py-2.5 font-body text-sm text-smoke placeholder:text-smoke focus:border-ember/50 focus:outline-none focus:ring-1 focus:ring-ember/30"
           readOnly
         />
       </div>
@@ -75,8 +76,8 @@ function PostJobForm({ onFind, disabled }: PostJobFormProps) {
           <div
             className="absolute left-[15%] right-[20%] h-full rounded-full bg-gradient-to-r from-ember to-amber"
           />
-          <div className="absolute left-[15%] top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-ember bg-carbon shadow-md" />
-          <div className="absolute right-[20%] top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-amber bg-carbon shadow-md" />
+          <div className="absolute left-[15%] top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-ember bg-white shadow-md" />
+          <div className="absolute right-[20%] top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-amber bg-white shadow-md" />
         </div>
         <div className="flex justify-between">
           <span className="font-mono text-[10px] text-smoke">₹1,000</span>
@@ -108,7 +109,7 @@ function IdlePanel() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="flex h-full min-h-[340px] flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-steel/30 bg-carbon/50 p-6"
+      className="flex h-full min-h-[340px] flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-steel/30 bg-white/80 p-6"
     >
       <div className="flex h-14 w-14 items-center justify-center rounded-full border border-steel/30 bg-graphite/40">
         <svg className="h-6 w-6 text-smoke" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -132,7 +133,7 @@ function SearchingPanel() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="flex h-full min-h-[340px] flex-col items-center justify-center gap-6 rounded-2xl border border-amber/20 bg-carbon/50 p-6"
+      className="flex h-full min-h-[340px] flex-col items-center justify-center gap-6 rounded-2xl border border-amber/20 bg-white/80 p-6"
     >
       {/* Radar rings */}
       <div className="relative flex h-28 w-28 items-center justify-center">
@@ -167,7 +168,7 @@ function SearchingPanel() {
 
       {/* Searching text with animated dots */}
       <div className="flex items-center gap-1">
-        <span className="font-heading text-base font-semibold text-white">Searching</span>
+        <span className="font-heading text-base font-semibold text-ink">Searching</span>
         {[0, 1, 2].map((i) => (
           <motion.span
             key={i}
@@ -218,7 +219,7 @@ function MatchedPanel({ onReset }: { onReset: () => void }) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0 }}
       transition={{ type: "spring", stiffness: 280, damping: 24 }}
-      className="rounded-2xl border border-verified/30 bg-carbon/50 p-6 space-y-4"
+      className="rounded-2xl border border-verified/30 bg-white/80 p-6 space-y-4"
     >
       {/* Match banner */}
       <div className="flex items-center justify-between">
@@ -251,7 +252,7 @@ function MatchedPanel({ onReset }: { onReset: () => void }) {
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
-              <p className="font-heading text-sm font-bold text-white">Rajan Kumar</p>
+              <p className="font-heading text-sm font-bold text-ink">Rajan Kumar</p>
               <span className="rounded bg-amber/10 border border-amber/30 px-1.5 py-0.5 font-mono text-[9px] font-semibold text-amber">
                 ELITE
               </span>
@@ -265,7 +266,7 @@ function MatchedPanel({ onReset }: { onReset: () => void }) {
             </div>
           </div>
           <div className="text-right flex-shrink-0">
-            <p className="font-mono text-xs text-silver">2.3 km</p>
+            <p className="font-mono text-xs text-smoke">2.3 km</p>
             <p className="font-mono text-[10px] text-ember font-semibold">8 min ETA</p>
           </div>
         </div>
@@ -378,9 +379,11 @@ export function LiveMatchDemo() {
     <section
       id="live-demo"
       ref={sectionRef}
-      className="relative bg-void py-24 lg:py-32 overflow-hidden"
+      className="relative bg-offwhite py-24 lg:py-32 overflow-hidden"
       aria-labelledby="demo-headline"
     >
+      <ShaderMesh variant="light" />
+
       {/* Glow backdrop */}
       <div
         className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ember opacity-[0.04] blur-[120px]"
@@ -398,12 +401,12 @@ export function LiveMatchDemo() {
         >
           <h2
             id="demo-headline"
-            className="font-display font-black uppercase leading-none text-white"
+            className="font-display font-black uppercase leading-none text-ink"
             style={{ fontSize: "var(--text-display-lg)" }}
           >
             WATCH IT HAPPEN.
           </h2>
-          <p className="mt-4 font-body text-base text-silver">
+          <p className="mt-4 font-body text-base text-smoke">
             This is what a JOR match looks like in real time.
           </p>
         </motion.div>
@@ -444,11 +447,11 @@ export function LiveMatchDemo() {
             <div
               key={stat.label}
               className={cn(
-                "flex flex-col items-center gap-1 bg-carbon px-6 py-8",
+                "flex flex-col items-center gap-1 bg-white px-6 py-8",
                 i < MICRO_STATS.length - 1 && "sm:border-r sm:border-steel/20"
               )}
             >
-              <span className="font-mono text-3xl font-black text-white tracking-tight">
+              <span className="font-mono text-3xl font-black text-ink tracking-tight">
                 {stat.value}
               </span>
               <span className="font-body text-sm text-smoke text-center">{stat.label}</span>

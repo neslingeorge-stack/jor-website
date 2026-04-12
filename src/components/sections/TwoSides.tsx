@@ -35,7 +35,7 @@ function Panel({ side, features }: PanelProps) {
   const tagColor = isFleet ? "text-ember" : "text-verified";
   const checkColor = isFleet ? "text-ember" : "text-verified";
   const calloutBorder = isFleet ? "border-ember/30" : "border-verified/30";
-  const bg = isFleet ? "bg-carbon" : "bg-obsidian";
+  const bg = isFleet ? "bg-white" : "bg-cream";
 
   const tag = isFleet ? "FOR FLEET OWNERS" : "FOR DRIVERS";
   const heading = isFleet
@@ -44,13 +44,13 @@ function Panel({ side, features }: PanelProps) {
 
   const callout = isFleet ? (
     <>
-      <span className="font-heading font-bold text-white">30% Commission</span>
-      <span className="text-silver"> · No hidden fees. No broker cuts. No surprises. One transparent commission on every completed job.</span>
+      <span className="font-heading font-bold text-ink">30% Commission</span>
+      <span className="text-smoke"> · No hidden fees. No broker cuts. No surprises. One transparent commission on every completed job.</span>
     </>
   ) : (
     <>
-      <span className="font-heading font-bold text-white">Driver Tiers:</span>
-      <span className="text-silver">
+      <span className="font-heading font-bold text-ink">Driver Tiers:</span>
+      <span className="text-smoke">
         {" "}
         <span className="text-amber">Bronze</span>
         {" → "}
@@ -101,7 +101,7 @@ function Panel({ side, features }: PanelProps) {
         {/* Heading */}
         <motion.h2
           variants={fadeUp}
-          className="font-display text-[clamp(36px,5vw,64px)] font-extrabold leading-[0.95] tracking-tight text-white"
+          className="font-display text-[clamp(36px,5vw,64px)] font-extrabold leading-[0.95] tracking-tight text-ink"
         >
           {heading.map((line, i) => (
             <span key={i} className="block">
@@ -129,7 +129,7 @@ function Panel({ side, features }: PanelProps) {
               >
                 <Check size={16} strokeWidth={2.5} />
               </span>
-              <span className="font-body text-sm leading-relaxed text-silver">
+              <span className="font-body text-sm leading-relaxed text-smoke">
                 {feat}
               </span>
             </motion.li>

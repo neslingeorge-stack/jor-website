@@ -46,7 +46,7 @@ interface FieldProps {
 function Field({ id, label, type = "text", placeholder, value, onChange, required }: FieldProps) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={id} className="font-heading text-xs font-semibold text-silver">
+      <label htmlFor={id} className="font-heading text-xs font-semibold text-smoke">
         {label}
         {required && <span className="ml-0.5 text-ember">*</span>}
       </label>
@@ -58,8 +58,8 @@ function Field({ id, label, type = "text", placeholder, value, onChange, require
         onChange={(e) => onChange(e.target.value)}
         required={required}
         className={[
-          "w-full rounded-lg border border-steel/30 bg-white/5 px-4 py-3",
-          "font-body text-sm text-white placeholder-smoke",
+          "w-full rounded-lg border border-steel/30 bg-ink/5 px-4 py-3",
+          "font-body text-sm text-ink placeholder-smoke",
           "outline-none transition-colors duration-200",
           "focus:border-ember/60 focus:ring-1 focus:ring-ember/30",
         ].join(" ")}
@@ -81,7 +81,7 @@ interface SelectFieldProps {
 function SelectField({ id, label, placeholder, value, onChange, options, required }: SelectFieldProps) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={id} className="font-heading text-xs font-semibold text-silver">
+      <label htmlFor={id} className="font-heading text-xs font-semibold text-smoke">
         {label}
         {required && <span className="ml-0.5 text-ember">*</span>}
       </label>
@@ -91,11 +91,11 @@ function SelectField({ id, label, placeholder, value, onChange, options, require
         onChange={(e) => onChange(e.target.value)}
         required={required}
         className={[
-          "w-full rounded-lg border border-steel/30 bg-carbon px-4 py-3",
-          "font-body text-sm text-white",
+          "w-full rounded-lg border border-steel/30 bg-white px-4 py-3",
+          "font-body text-sm text-ink",
           "outline-none transition-colors duration-200",
           "focus:border-ember/60 focus:ring-1 focus:ring-ember/30",
-          value === "" ? "text-smoke" : "text-white",
+          value === "" ? "text-smoke" : "text-ink",
         ].join(" ")}
       >
         <option value="" disabled>
@@ -122,10 +122,10 @@ function SuccessState({ label }: { label: string }) {
     >
       <CheckCircle className="h-12 w-12 text-verified" strokeWidth={1.5} />
       <div>
-        <p className="font-display font-black text-2xl uppercase text-white">
+        <p className="font-display font-black text-2xl uppercase text-ink">
           You&apos;re on the list!
         </p>
-        <p className="mt-2 font-body text-sm text-silver">{label}</p>
+        <p className="mt-2 font-body text-sm text-smoke">{label}</p>
       </div>
     </motion.div>
   );
@@ -151,17 +151,17 @@ function FleetForm() {
   }
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
+    <div className="rounded-2xl border border-ink/10 bg-ink/5 p-8 backdrop-blur-sm">
       {/* Card header */}
       <div className="mb-6 flex items-center gap-3">
         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ember/10 text-ember">
           <Truck className="h-5 w-5" />
         </div>
         <div>
-          <h3 className="font-display font-black text-xl uppercase text-white">
+          <h3 className="font-display font-black text-xl uppercase text-ink">
             Fleet Owners
           </h3>
-          <p className="font-body text-xs text-silver">
+          <p className="font-body text-xs text-smoke">
             Post your first job in under 2 minutes
           </p>
         </div>
@@ -240,17 +240,17 @@ function DriverForm() {
   }
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
+    <div className="rounded-2xl border border-ink/10 bg-ink/5 p-8 backdrop-blur-sm">
       {/* Card header */}
       <div className="mb-6 flex items-center gap-3">
         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-verified/10 text-verified">
           <SteeringWheelIcon className="h-5 w-5" />
         </div>
         <div>
-          <h3 className="font-display font-black text-xl uppercase text-white">
+          <h3 className="font-display font-black text-xl uppercase text-ink">
             Drivers
           </h3>
-          <p className="font-body text-xs text-silver">
+          <p className="font-body text-xs text-smoke">
             Free to join. Earn on every completed trip.
           </p>
         </div>
@@ -313,7 +313,7 @@ function DriverForm() {
 export function WaitlistCTA() {
   return (
     <section
-      className="relative overflow-hidden bg-void py-24 lg:py-32"
+      className="relative overflow-hidden bg-offwhite py-24 lg:py-32"
       aria-label="Early access waitlist"
     >
       {/* Background layers */}
@@ -334,7 +334,7 @@ export function WaitlistCTA() {
         className="pointer-events-none absolute inset-0 z-[1]"
         style={{
           background:
-            "radial-gradient(ellipse 70% 70% at 50% 50%, transparent 20%, rgba(8,8,8,0.6) 100%)",
+            "radial-gradient(ellipse 70% 70% at 50% 50%, transparent 20%, rgba(245,243,239,0.6) 100%)",
         }}
         aria-hidden="true"
       />
@@ -360,13 +360,13 @@ export function WaitlistCTA() {
             style={{ fontSize: "var(--text-display-xl)" }}
             aria-label="The road starts here"
           >
-            <span className="block text-white">THE ROAD /</span>
+            <span className="block text-ink">THE ROAD /</span>
             <span className="block italic text-ember">STARTS HERE.</span>
           </h2>
 
           {/* Subtext */}
           <p
-            className="max-w-[520px] font-body leading-relaxed text-silver"
+            className="max-w-[520px] font-body leading-relaxed text-smoke"
             style={{ fontSize: "18px" }}
           >
             JOR is launching in Bangalore — India&apos;s commercial transport
@@ -405,7 +405,7 @@ export function WaitlistCTA() {
           className="mt-8 flex items-center justify-center gap-2"
         >
           <Lock className="h-3 w-3 text-smoke" />
-          <p className="font-body text-xs text-silver">
+          <p className="font-body text-xs text-smoke">
             No spam · Your data stays private · Unsubscribe anytime
           </p>
         </motion.div>

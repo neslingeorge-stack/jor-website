@@ -11,7 +11,7 @@ export function SocialProofBar() {
     <div
       className={cn(
         "relative h-14 w-full overflow-hidden",
-        "border-y border-steel/20 bg-void"
+        "border-y border-steel/20 bg-offwhite"
       )}
       aria-label="Social proof statistics"
     >
@@ -19,7 +19,7 @@ export function SocialProofBar() {
       <div
         className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20"
         style={{
-          background: "linear-gradient(to right, #1C1C1E 0%, transparent 100%)",
+          background: "linear-gradient(to right, #F5F3EF 0%, transparent 100%)",
         }}
         aria-hidden="true"
       />
@@ -28,7 +28,7 @@ export function SocialProofBar() {
       <div
         className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20"
         style={{
-          background: "linear-gradient(to left, #1C1C1E 0%, transparent 100%)",
+          background: "linear-gradient(to left, #F5F3EF 0%, transparent 100%)",
         }}
         aria-hidden="true"
       />
@@ -55,7 +55,7 @@ export function SocialProofBar() {
               key={`${item}-${i}`}
               className="flex shrink-0 items-center"
             >
-              <span className="whitespace-nowrap px-5 font-mono text-xs text-silver">
+              <span className="whitespace-nowrap px-5 font-mono text-xs text-smoke">
                 {item}
               </span>
               <span

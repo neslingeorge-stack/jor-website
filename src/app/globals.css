@@ -51,8 +51,8 @@
 }
 
 body {
-  background: var(--color-void);
-  color: var(--color-white);
+  background: var(--color-offwhite);
+  color: var(--color-ink);
   font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -135,7 +135,7 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-void);
+  background: var(--color-offwhite);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--color-steel);
@@ -148,7 +148,7 @@ body {
 /* Selection */
 ::selection {
   background: rgba(255, 140, 0, 0.3);
-  color: var(--color-white);
+  color: var(--color-ink);
 }
 
 /* Marquee animation for SocialProofBar */

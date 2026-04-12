@@ -97,7 +97,7 @@ function YouTubeIcon({ size = 16 }: { size?: number }) {
       aria-hidden="true"
     >
       <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
-      <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#18181A" />
+      <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#EDE9E3" />
     </svg>
   );
 }
@@ -142,7 +142,7 @@ function FooterColumn({ heading, links, hrefs }: FooterColumnProps) {
           <li key={label}>
             <Link
               href={hrefs[label] ?? "/"}
-              className="font-body text-sm text-silver hover:text-white transition-colors duration-200"
+              className="font-body text-sm text-smoke hover:text-ink transition-colors duration-200"
             >
               {label}
             </Link>
@@ -159,7 +159,7 @@ export function Footer() {
   return (
     <footer
       className="relative w-full"
-      style={{ background: "#18181A" }}
+      style={{ background: "#EDE9E3" }}
       aria-label="Site footer"
     >
       {/* Top gradient border: transparent → ember → transparent */}
@@ -202,7 +202,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex items-center justify-center w-9 h-9 rounded-lg border border-steel/30 text-smoke hover:text-white hover:border-ember/50 hover:bg-ember/5 transition-all duration-200"
+                  className="flex items-center justify-center w-9 h-9 rounded-lg border border-steel/30 text-smoke hover:text-ink hover:border-ember/50 hover:bg-ember/5 transition-all duration-200"
                 >
                   <Icon size={16} />
                 </a>

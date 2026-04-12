@@ -51,7 +51,7 @@ export function AdminPreview() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative overflow-hidden bg-void py-24 md:py-32" ref={ref}>
+    <section className="relative overflow-hidden bg-offwhite py-24 md:py-32" ref={ref}>
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
           variants={staggerContainer}
@@ -67,7 +67,7 @@ export function AdminPreview() {
           </motion.p>
           <motion.h2
             variants={fadeUp}
-            className="font-display text-[var(--text-display-md)] font-black leading-[0.92] text-white"
+            className="font-display text-[var(--text-display-md)] font-black leading-[0.92] text-ink"
           >
             This is what JOR looks like.
             <br />
@@ -75,7 +75,7 @@ export function AdminPreview() {
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="mx-auto mt-6 max-w-2xl font-body text-lg text-silver"
+            className="mx-auto mt-6 max-w-2xl font-body text-lg text-smoke"
           >
             Fleet owners get a full operations dashboard. Admins get real-time
             visibility into every job, driver, and rupee.
@@ -86,7 +86,7 @@ export function AdminPreview() {
           variants={fadeUp}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
-          className="relative rounded-2xl border border-steel/20 bg-carbon/80 shadow-2xl shadow-ember/5 backdrop-blur-sm"
+          className="relative rounded-2xl border border-steel/20 bg-white/90 shadow-2xl shadow-ember/5 backdrop-blur-sm"
         >
           {/* Browser chrome */}
           <div className="flex items-center gap-2 border-b border-steel/20 px-4 py-3">
@@ -96,7 +96,7 @@ export function AdminPreview() {
               <div className="h-3 w-3 rounded-full bg-verified/80" />
             </div>
             <div className="ml-4 flex-1 rounded-md bg-graphite/50 px-4 py-1">
-              <span className="font-mono text-xs text-silver">
+              <span className="font-mono text-xs text-smoke">
                 admin.jor.in &middot; Live Dashboard
               </span>
             </div>
@@ -114,37 +114,37 @@ export function AdminPreview() {
             <div className="mb-6 flex flex-wrap gap-3">
               <div className="flex items-center gap-2 rounded-lg bg-graphite/50 px-4 py-2">
                 <LivePulse color="verified" />
-                <span className="font-mono text-sm font-semibold text-white">
+                <span className="font-mono text-sm font-semibold text-ink">
                   1,842
                 </span>
-                <span className="text-xs text-silver">Active Drivers</span>
+                <span className="text-xs text-smoke">Active Drivers</span>
               </div>
               <div className="flex items-center gap-2 rounded-lg bg-graphite/50 px-4 py-2">
                 <LivePulse color="ember" />
-                <span className="font-mono text-sm font-semibold text-white">
+                <span className="font-mono text-sm font-semibold text-ink">
                   387
                 </span>
-                <span className="text-xs text-silver">Jobs Today</span>
+                <span className="text-xs text-smoke">Jobs Today</span>
               </div>
               <div className="flex items-center gap-2 rounded-lg bg-graphite/50 px-4 py-2">
                 <span className="font-mono text-sm font-semibold text-amber">
                   4.2 min
                 </span>
-                <span className="text-xs text-silver">Avg Match Time</span>
+                <span className="text-xs text-smoke">Avg Match Time</span>
               </div>
               <div className="flex items-center gap-2 rounded-lg bg-graphite/50 px-4 py-2">
                 <span className="font-mono text-sm font-semibold text-verified">
                   97.8%
                 </span>
-                <span className="text-xs text-silver">Success Rate</span>
+                <span className="text-xs text-smoke">Success Rate</span>
               </div>
             </div>
 
             {/* Charts grid */}
             <div className="grid gap-4 md:grid-cols-2">
               {/* Revenue sparkline */}
-              <div className="rounded-xl border border-steel/20 bg-obsidian/50 p-4">
-                <p className="mb-3 font-heading text-sm font-semibold text-silver">
+              <div className="rounded-xl border border-steel/20 bg-cream/80 p-4">
+                <p className="mb-3 font-heading text-sm font-semibold text-smoke">
                   Revenue (7-day) — ₹ Lakhs
                 </p>
                 <ResponsiveContainer width="100%" height={160}>
@@ -170,8 +170,8 @@ export function AdminPreview() {
               </div>
 
               {/* Trip volume */}
-              <div className="rounded-xl border border-steel/20 bg-obsidian/50 p-4">
-                <p className="mb-3 font-heading text-sm font-semibold text-silver">
+              <div className="rounded-xl border border-steel/20 bg-cream/80 p-4">
+                <p className="mb-3 font-heading text-sm font-semibold text-smoke">
                   Trip Volume (Weekly)
                 </p>
                 <ResponsiveContainer width="100%" height={160}>
@@ -190,8 +190,8 @@ export function AdminPreview() {
               </div>
 
               {/* Area chart - driver onboarding */}
-              <div className="rounded-xl border border-steel/20 bg-obsidian/50 p-4">
-                <p className="mb-3 font-heading text-sm font-semibold text-silver">
+              <div className="rounded-xl border border-steel/20 bg-cream/80 p-4">
+                <p className="mb-3 font-heading text-sm font-semibold text-smoke">
                   Driver Onboarding Trend
                 </p>
                 <ResponsiveContainer width="100%" height={160}>
@@ -222,8 +222,8 @@ export function AdminPreview() {
               </div>
 
               {/* Pie chart - service distribution */}
-              <div className="rounded-xl border border-steel/20 bg-obsidian/50 p-4">
-                <p className="mb-3 font-heading text-sm font-semibold text-silver">
+              <div className="rounded-xl border border-steel/20 bg-cream/80 p-4">
+                <p className="mb-3 font-heading text-sm font-semibold text-smoke">
                   Service Distribution
                 </p>
                 <div className="flex items-center gap-4">
@@ -252,7 +252,7 @@ export function AdminPreview() {
                           className="h-2.5 w-2.5 rounded-full"
                           style={{ backgroundColor: item.color }}
                         />
-                        <span className="font-mono text-xs text-silver">
+                        <span className="font-mono text-xs text-smoke">
                           {item.name} {item.value}%
                         </span>
                       </div>

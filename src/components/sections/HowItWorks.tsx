@@ -6,6 +6,7 @@ import { Clipboard, Brain, CheckCircle } from "lucide-react";
 import { HOW_IT_WORKS_STEPS } from "@/lib/constants";
 import { fadeUp } from "@/lib/animations";
 import { cn } from "@/lib/utils";
+import { ShaderWireframe } from "@/components/ui/shader-gradient";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -52,7 +53,7 @@ const STEP_ICONS = [Clipboard, Brain, CheckCircle] as const;
 
 function PostJobMockup() {
   return (
-    <div className="rounded-xl border border-steel/20 bg-obsidian p-5 space-y-3">
+    <div className="rounded-xl border border-steel/20 bg-white p-5 space-y-3">
       {/* Header bar */}
       <div className="flex items-center gap-2 pb-2 border-b border-steel/20">
         <div className="h-2 w-2 rounded-full bg-ember" />
@@ -67,7 +68,7 @@ function PostJobMockup() {
           Vehicle Type
         </label>
         <div className="flex items-center justify-between rounded-lg border border-steel/30 bg-graphite/40 px-3 py-2">
-          <span className="font-body text-xs text-silver">Heavy Truck · 12-Wheeler</span>
+          <span className="font-body text-xs text-smoke">Heavy Truck · 12-Wheeler</span>
           <svg className="h-3 w-3 text-smoke" viewBox="0 0 12 12" fill="none">
             <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
@@ -81,7 +82,7 @@ function PostJobMockup() {
         </label>
         <div className="flex items-center gap-2 rounded-lg border border-steel/30 bg-graphite/40 px-3 py-2">
           <div className="h-1.5 w-1.5 rounded-full bg-verified flex-shrink-0" />
-          <span className="font-body text-xs text-silver">Peenya Industrial Area</span>
+          <span className="font-body text-xs text-smoke">Peenya Industrial Area</span>
         </div>
       </div>
 
@@ -92,7 +93,7 @@ function PostJobMockup() {
         </label>
         <div className="flex items-center gap-2 rounded-lg border border-steel/30 bg-graphite/40 px-3 py-2">
           <div className="h-1.5 w-1.5 rounded-full bg-ember flex-shrink-0" />
-          <span className="font-body text-xs text-silver">Whitefield Logistics Park</span>
+          <span className="font-body text-xs text-smoke">Whitefield Logistics Park</span>
         </div>
       </div>
 
@@ -108,7 +109,7 @@ function PostJobMockup() {
       </div>
 
       {/* Post button */}
-      <button className="w-full rounded-lg bg-ember py-2.5 font-heading text-xs font-semibold text-void">
+      <button className="w-full rounded-lg bg-ember py-2.5 font-heading text-xs font-semibold text-white">
         Post Job →
       </button>
     </div>
@@ -119,7 +120,7 @@ function PostJobMockup() {
 
 function MatchingMockup() {
   return (
-    <div className="rounded-xl border border-steel/20 bg-obsidian p-5 space-y-3">
+    <div className="rounded-xl border border-steel/20 bg-white p-5 space-y-3">
       {/* Header */}
       <div className="flex items-center gap-2 pb-2 border-b border-steel/20">
         <motion.div
@@ -161,11 +162,11 @@ function MatchingMockup() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3 + i * 0.25, duration: 0.5 }}
         >
-          <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-steel/40 font-mono text-[10px] font-bold text-silver">
+          <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-steel/40 font-mono text-[10px] font-bold text-smoke">
             {driver.initials}
           </div>
           <div className="flex-1 min-w-0">
-            <span className="font-heading text-xs text-white">{driver.name}</span>
+            <span className="font-heading text-xs text-ink">{driver.name}</span>
           </div>
           <span className={cn("font-mono text-xs font-bold", driver.color)}>
             {driver.score}%
@@ -183,7 +184,7 @@ function MatchingMockup() {
 
 function ConfirmationMockup() {
   return (
-    <div className="rounded-xl border border-steel/20 bg-obsidian p-5 space-y-3">
+    <div className="rounded-xl border border-steel/20 bg-white p-5 space-y-3">
       {/* Header */}
       <div className="flex items-center gap-2 pb-2 border-b border-steel/20">
         <div className="h-2 w-2 rounded-full bg-verified" />
@@ -202,7 +203,7 @@ function ConfirmationMockup() {
         >
           <CheckCircle className="h-6 w-6 text-verified" />
         </motion.div>
-        <span className="font-heading text-xs font-semibold text-white">Driver Confirmed</span>
+        <span className="font-heading text-xs font-semibold text-ink">Driver Confirmed</span>
       </div>
 
       {/* Driver card */}
@@ -211,7 +212,7 @@ function ConfirmationMockup() {
           RK
         </div>
         <div className="flex-1 min-w-0">
-          <p className="font-heading text-xs font-semibold text-white">Rajan Kumar</p>
+          <p className="font-heading text-xs font-semibold text-ink">Rajan Kumar</p>
           <p className="font-mono text-[10px] text-verified">JOR Score 4.8 · Elite</p>
         </div>
         <div className="text-right">
@@ -245,7 +246,7 @@ function ConfirmationMockup() {
             animate={{ opacity: [1, 0.3, 1] }}
             transition={{ duration: 1, repeat: Infinity }}
           />
-          <span className="font-mono text-[10px] text-silver">Live GPS Active</span>
+          <span className="font-mono text-[10px] text-smoke">Live GPS Active</span>
         </div>
         <span className="font-mono text-[10px] text-smoke">Escrow Locked</span>
       </div>
@@ -328,7 +329,7 @@ function StepCard({ step, index, isOdd }: StepCardProps) {
       {/* Card */}
       <div
         className={cn(
-          "relative rounded-2xl border border-steel/30 bg-carbon p-6 space-y-5",
+          "relative rounded-2xl border border-steel/30 bg-white p-6 space-y-5",
           "border-l-2",
           accentMap[step.color]
         )}
@@ -344,12 +345,12 @@ function StepCard({ step, index, isOdd }: StepCardProps) {
         </div>
 
         {/* Heading */}
-        <h3 className="font-heading font-bold text-white" style={{ fontSize: 24 }}>
+        <h3 className="font-heading font-bold text-ink" style={{ fontSize: 24 }}>
           {step.heading}
         </h3>
 
         {/* Body */}
-        <p className="font-body text-sm leading-relaxed text-silver">{step.body}</p>
+        <p className="font-body text-sm leading-relaxed text-smoke">{step.body}</p>
 
         {/* Mockup */}
         <Mockup />
@@ -369,7 +370,7 @@ export function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="relative bg-obsidian py-24 lg:py-32 overflow-hidden"
+      className="relative bg-cream py-24 lg:py-32 overflow-hidden"
       aria-labelledby="hiw-headline"
     >
       {/* Subtle grid texture */}
@@ -377,11 +378,13 @@ export function HowItWorks() {
         className="pointer-events-none absolute inset-0 opacity-[0.025]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
+            "linear-gradient(rgba(28,28,30,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(28,28,30,0.04) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
         aria-hidden="true"
       />
+
+      <ShaderWireframe />
 
       <div className="relative mx-auto max-w-6xl px-6 lg:px-10">
         {/* Headline */}
@@ -394,13 +397,13 @@ export function HowItWorks() {
         >
           <h2
             id="hiw-headline"
-            className="font-display font-black uppercase leading-none text-white"
+            className="font-display font-black uppercase leading-none text-ink"
             style={{ fontSize: "var(--text-display-lg)" }}
           >
             FROM JOB POST TO{" "}
             <span className="whitespace-nowrap">DRIVER CONFIRMED.</span>
           </h2>
-          <p className="mt-4 font-body text-base text-silver">
+          <p className="mt-4 font-body text-base text-smoke">
             In under 5 minutes. Every time.
           </p>
         </motion.div>

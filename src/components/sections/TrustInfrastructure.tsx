@@ -60,10 +60,10 @@ export function TrustInfrastructure() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-obsidian"
+      className="relative w-full overflow-hidden bg-cream"
       style={{
         background:
-          "linear-gradient(160deg, var(--color-obsidian) 0%, var(--color-carbon) 100%)",
+          "linear-gradient(160deg, var(--color-cream) 0%, var(--color-offwhite) 100%)",
       }}
     >
       <div className="mx-auto max-w-6xl px-6 py-24 lg:px-8 lg:py-32">
@@ -83,7 +83,7 @@ export function TrustInfrastructure() {
 
           <motion.h2
             variants={fadeUp}
-            className="font-display font-extrabold text-white"
+            className="font-display font-extrabold text-ink"
             style={{ fontSize: "var(--text-display-md)", lineHeight: 1.1 }}
           >
             Trust is not a feature.
@@ -93,7 +93,7 @@ export function TrustInfrastructure() {
 
           <motion.p
             variants={fadeUp}
-            className="max-w-2xl font-body text-base leading-relaxed text-silver"
+            className="max-w-2xl font-body text-base leading-relaxed text-smoke"
           >
             India&apos;s trucking industry runs on 5 million informal, unverified driver
             relationships. JOR replaces phone-tree hiring with identity-verified,
@@ -116,7 +116,7 @@ export function TrustInfrastructure() {
                 initial="initial"
                 animate={isInView ? "animate" : "initial"}
                 className={cn(
-                  "group relative flex flex-col gap-5 rounded-2xl border border-steel/20 bg-carbon p-8",
+                  "group relative flex flex-col gap-5 rounded-2xl border border-steel/20 bg-white p-8",
                   "border-l-[3px] transition-all duration-300",
                   borderColorMap[color],
                   hoverBorderMap[color]
@@ -128,12 +128,12 @@ export function TrustInfrastructure() {
                 </div>
 
                 {/* Heading */}
-                <h3 className="font-heading text-lg font-bold leading-snug text-white">
+                <h3 className="font-heading text-lg font-bold leading-snug text-ink">
                   {pillar.title}
                 </h3>
 
                 {/* Body */}
-                <p className="font-body text-sm leading-relaxed text-silver">
+                <p className="font-body text-sm leading-relaxed text-smoke">
                   {pillar.body}
                 </p>
 
@@ -159,7 +159,7 @@ export function TrustInfrastructure() {
           initial="initial"
           animate={isInView ? "animate" : "initial"}
           transition={{ delay: 0.6 }}
-          className="mt-20 w-full rounded-2xl border border-steel/20 bg-void/60 px-8 py-10 text-center"
+          className="mt-20 w-full rounded-2xl border border-steel/20 bg-offwhite/80 px-8 py-10 text-center"
         >
           <blockquote>
             <p

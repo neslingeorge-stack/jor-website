@@ -39,7 +39,7 @@ export function Card({
       initial="rest"
       whileHover="hover"
       className={cn(
-        "relative rounded-2xl border border-steel/30 bg-carbon p-10 transition-colors duration-300",
+        "relative rounded-2xl border border-steel/15 bg-white p-10 shadow-sm transition-colors duration-300",
         glowColors[hoverGlow],
         topAccent &&
           `before:absolute before:left-0 before:right-0 before:top-0 before:h-1 before:rounded-t-2xl ${accentColors[topAccent]}`,

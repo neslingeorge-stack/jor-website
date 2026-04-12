@@ -46,7 +46,7 @@ function StatusBadge({ status, active }: StatusBadgeProps) {
   }
 
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-steel/30 bg-graphite/40 px-3 py-1 text-xs font-heading font-semibold uppercase tracking-widest text-silver">
+    <span className="inline-flex items-center gap-2 rounded-full border border-steel/30 bg-graphite/40 px-3 py-1 text-xs font-heading font-semibold uppercase tracking-widest text-smoke">
       {status}
     </span>
   );
@@ -73,7 +73,7 @@ function PhaseCard({ phase, index, isVisible }: PhaseCardProps) {
   const labelClass = isActive
     ? "text-ember"
     : index === 1
-      ? "text-silver"
+      ? "text-smoke"
       : index === 2
         ? "text-smoke"
         : "text-smoke/60";
@@ -81,13 +81,13 @@ function PhaseCard({ phase, index, isVisible }: PhaseCardProps) {
   const checkClass = isActive
     ? "text-ember"
     : index === 1
-      ? "text-silver"
+      ? "text-smoke"
       : "text-smoke";
 
   const featureClass = isActive
-    ? "text-white"
+    ? "text-ink"
     : index === 1
-      ? "text-silver"
+      ? "text-smoke"
       : index === 2
         ? "text-smoke"
         : "text-smoke/60";
@@ -95,7 +95,7 @@ function PhaseCard({ phase, index, isVisible }: PhaseCardProps) {
   const metricClass = isActive
     ? "text-ember"
     : index === 1
-      ? "text-silver"
+      ? "text-smoke"
       : "text-smoke/60";
 
   return (
@@ -105,7 +105,7 @@ function PhaseCard({ phase, index, isVisible }: PhaseCardProps) {
       animate={isVisible ? "animate" : "initial"}
       custom={index}
       className={[
-        "relative snap-center min-w-[340px] max-w-[380px] rounded-2xl border bg-carbon p-8 flex flex-col gap-6 shrink-0",
+        "relative snap-center min-w-[340px] max-w-[380px] rounded-2xl border bg-white p-8 flex flex-col gap-6 shrink-0",
         borderClass,
         isActive
           ? "shadow-[0_0_40px_rgba(255,140,0,0.12)] ring-1 ring-ember/20"
@@ -159,7 +159,7 @@ function PhaseCard({ phase, index, isVisible }: PhaseCardProps) {
       {/* Target metric */}
       <div
         className={[
-          "rounded-xl border border-steel/20 bg-void/60 px-4 py-3 font-mono text-xs leading-relaxed",
+          "rounded-xl border border-steel/20 bg-offwhite/80 px-4 py-3 font-mono text-xs leading-relaxed",
           metricClass,
         ].join(" ")}
       >
@@ -176,7 +176,7 @@ export function EcosystemRoadmap() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-void py-24 lg:py-32"
+      className="relative overflow-hidden bg-offwhite py-24 lg:py-32"
       aria-label="Ecosystem Roadmap"
     >
       {/* Background */}
@@ -187,7 +187,7 @@ export function EcosystemRoadmap() {
         className="pointer-events-none absolute inset-0 z-[1]"
         style={{
           background:
-            "radial-gradient(ellipse 90% 60% at 50% 50%, transparent 30%, rgba(8,8,8,0.7) 100%)",
+            "radial-gradient(ellipse 90% 60% at 50% 50%, transparent 30%, rgba(245,243,239,0.7) 100%)",
         }}
         aria-hidden="true"
       />
@@ -208,7 +208,7 @@ export function EcosystemRoadmap() {
               className="font-display font-black uppercase leading-[0.9] tracking-tight"
               style={{ fontSize: "var(--text-display-md)" }}
             >
-              <span className="block text-white">A Matching Engine Today.</span>
+              <span className="block text-ink">A Matching Engine Today.</span>
               <span className="block text-ember">A Transportation OS Tomorrow.</span>
             </h2>
           </motion.div>

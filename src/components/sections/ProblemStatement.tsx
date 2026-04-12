@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { Card } from "@/components/ui/Card";
 import { GlowDivider } from "@/components/ui/GlowDivider";
 import { RoadGridBg } from "@/components/effects/RoadGridBg";
+import { ShaderMesh } from "@/components/ui/shader-gradient";
 
 type CardColor = "ember" | "amber" | "silver";
 
@@ -39,11 +40,12 @@ export function ProblemStatement() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-void py-28 lg:py-36"
+      className="relative w-full overflow-hidden bg-offwhite py-28 lg:py-36"
       aria-labelledby="problem-statement-heading"
     >
       {/* Subtle diagonal road-line background pattern at low opacity */}
       <RoadGridBg className="opacity-[0.03]" />
+      <ShaderMesh variant="warm" />
 
       {/* Faint center radial glow */}
       <div
@@ -68,7 +70,7 @@ export function ProblemStatement() {
             className="font-display font-black uppercase leading-[0.9] tracking-tight"
             style={{ fontSize: "var(--text-display-lg)" }}
           >
-            <span className="text-white">INDIA'S TRUCKS ARE READY.</span>
+            <span className="text-ink">INDIA'S TRUCKS ARE READY.</span>
             <br />
             <span className="text-ember">THE DRIVERS AREN'T.</span>
           </h2>
@@ -79,7 +81,7 @@ export function ProblemStatement() {
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mb-20 max-w-2xl text-center font-body text-lg leading-relaxed text-silver"
+          className="mx-auto mb-20 max-w-2xl text-center font-body text-lg leading-relaxed text-smoke"
         >
           India's commercial transport sector is paralysed by a structural driver
           shortage. Every idle truck is a loss. Every delayed shipment is a
@@ -131,10 +133,10 @@ export function ProblemStatement() {
 
                   {/* Label + body */}
                   <div className="flex flex-col gap-2">
-                    <p className="font-heading text-base font-semibold text-white">
+                    <p className="font-heading text-base font-semibold text-ink">
                       {card.label}
                     </p>
-                    <p className="font-body text-sm leading-relaxed text-silver">
+                    <p className="font-body text-sm leading-relaxed text-smoke">
                       {card.body}
                     </p>
                   </div>

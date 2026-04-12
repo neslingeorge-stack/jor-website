@@ -78,8 +78,8 @@ function BreakdownRow({ label, value, highlight, accent }: BreakdownRowProps) {
       : accent === "verified"
         ? "text-verified"
         : highlight
-          ? "text-white font-semibold"
-          : "text-silver";
+          ? "text-ink font-semibold"
+          : "text-smoke";
 
   return (
     <div className="flex items-center justify-between">
@@ -96,7 +96,7 @@ export function PricingSection() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-obsidian py-24 lg:py-32"
+      className="relative overflow-hidden bg-cream py-24 lg:py-32"
       aria-label="Pricing"
     >
       {/* Subtle top border */}
@@ -121,12 +121,12 @@ export function PricingSection() {
             PRICING
           </span>
           <h2
-            className="font-display font-black uppercase leading-[0.9] tracking-tight text-white"
+            className="font-display font-black uppercase leading-[0.9] tracking-tight text-ink"
             style={{ fontSize: "var(--text-display-md)" }}
           >
             Transparent by design.
           </h2>
-          <p className="mx-auto max-w-[480px] font-body text-base leading-relaxed text-silver">
+          <p className="mx-auto max-w-[480px] font-body text-base leading-relaxed text-smoke">
             One commission model. No subscriptions, no hidden fees, no broker
             cuts. JOR earns only when drivers complete jobs — aligning our
             incentives with yours.
@@ -141,7 +141,7 @@ export function PricingSection() {
             initial="initial"
             animate={isInView ? "animate" : "initial"}
             custom={0}
-            className="relative overflow-hidden rounded-2xl border border-steel/30 bg-carbon"
+            className="relative overflow-hidden rounded-2xl border border-steel/30 bg-white"
           >
             {/* Ember top accent */}
             <div
@@ -161,7 +161,7 @@ export function PricingSection() {
                 </p>
                 <div className="flex items-baseline gap-3">
                   <span
-                    className="font-display font-black leading-none text-white"
+                    className="font-display font-black leading-none text-ink"
                     style={{ fontSize: "clamp(40px, 5vw, 56px)" }}
                   >
                     30%
@@ -170,11 +170,11 @@ export function PricingSection() {
                     Commission
                   </span>
                 </div>
-                <p className="mt-1 font-body text-sm text-silver">Per completed job</p>
+                <p className="mt-1 font-body text-sm text-smoke">Per completed job</p>
               </div>
 
               {/* Breakdown table */}
-              <div className="rounded-xl border border-ember/20 bg-void/70 p-4">
+              <div className="rounded-xl border border-ember/20 bg-offwhite/90 p-4">
                 <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-smoke">
                   Example · ₹3,000 job
                 </p>
@@ -190,14 +190,14 @@ export function PricingSection() {
               <FeatureList
                 features={FLEET_FEATURES}
                 checkColor="text-ember"
-                textColor="text-silver"
+                textColor="text-smoke"
               />
 
               {/* Add-on */}
               <div className="flex items-center gap-3 rounded-xl border border-amber/20 bg-amber/5 px-4 py-3">
                 <Zap className="h-4 w-4 shrink-0 text-amber" />
                 <div>
-                  <span className="font-heading text-sm font-semibold text-white">
+                  <span className="font-heading text-sm font-semibold text-ink">
                     JOR Boost
                   </span>
                   <span className="ml-2 font-mono text-sm text-amber">₹49/job</span>
@@ -220,7 +220,7 @@ export function PricingSection() {
             initial="initial"
             animate={isInView ? "animate" : "initial"}
             custom={1}
-            className="relative overflow-hidden rounded-2xl border border-verified/30 bg-carbon"
+            className="relative overflow-hidden rounded-2xl border border-verified/30 bg-white"
           >
             {/* Green top accent */}
             <div
@@ -247,19 +247,19 @@ export function PricingSection() {
                 </p>
                 <div className="flex items-baseline gap-3">
                   <span
-                    className="font-display font-black leading-none text-white"
+                    className="font-display font-black leading-none text-ink"
                     style={{ fontSize: "clamp(40px, 5vw, 56px)" }}
                   >
                     ₹0
                   </span>
                 </div>
-                <p className="mt-1 font-body text-sm text-silver">
+                <p className="mt-1 font-body text-sm text-smoke">
                   Forever free for drivers
                 </p>
               </div>
 
               {/* Earnings breakdown */}
-              <div className="rounded-xl border border-verified/20 bg-void/70 p-4">
+              <div className="rounded-xl border border-verified/20 bg-offwhite/90 p-4">
                 <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-smoke">
                   Example earnings breakdown
                 </p>
@@ -275,7 +275,7 @@ export function PricingSection() {
               <FeatureList
                 features={DRIVER_FEATURES}
                 checkColor="text-verified"
-                textColor="text-silver"
+                textColor="text-smoke"
               />
 
               {/* Driver tiers */}
@@ -295,7 +295,7 @@ export function PricingSection() {
                             ? "border-amber/40 bg-amber/10 text-amber"
                             : i >= 3
                               ? "border-verified/30 bg-verified/5 text-verified"
-                              : "border-steel/30 bg-graphite/40 text-silver",
+                              : "border-steel/30 bg-graphite/40 text-smoke",
                         ].join(" ")}
                       >
                         {tier}
@@ -320,9 +320,9 @@ export function PricingSection() {
           transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="mt-12 flex flex-col items-center gap-4 text-center"
         >
-          <p className="font-body text-base text-silver">
+          <p className="font-body text-base text-smoke">
             Running large-scale fleet operations?{" "}
-            <span className="text-white">Enterprise API + volume pricing available.</span>
+            <span className="text-ink">Enterprise API + volume pricing available.</span>
           </p>
           <Button variant="outline" size="md">
             Talk to Enterprise Sales →
