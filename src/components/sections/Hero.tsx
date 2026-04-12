@@ -13,10 +13,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { LivePulse } from "@/components/ui/LivePulse";
-import { SplineScene } from "@/components/ui/splite";
-import { Spotlight } from "@/components/ui/spotlight";
-import { CardGlass } from "@/components/ui/card-glass";
-import { FlowingLines } from "@/components/effects/FlowingLines";
+import Image from "next/image";
+import { BackgroundPaths } from "@/components/ui/background-paths";
 import { FloatingBlob } from "@/components/effects/FloatingBlob";
 import { GradientMesh } from "@/components/effects/GradientMesh";
 import { ParticleField } from "@/components/effects/ParticleField";
@@ -49,8 +47,8 @@ export function Hero() {
       {/* Gradient mesh — subtle warm tones */}
       <GradientMesh variant="warm" />
 
-      {/* Flowing animated lines */}
-      <FlowingLines variant="light" />
+      {/* Animated flowing paths */}
+      <BackgroundPaths className="absolute inset-0" />
 
       {/* Floating morphing blobs */}
       <FloatingBlob
@@ -180,39 +178,33 @@ export function Hero() {
               </motion.div>
             </motion.div>
 
-            {/* ── RIGHT COLUMN — Interactive 3D Scene ── */}
+            {/* ── RIGHT COLUMN — App Icon ── */}
             <motion.div
               variants={fadeInRight}
               initial="initial"
               animate="animate"
               className="hidden lg:flex items-center justify-center"
             >
-              <CardGlass className="w-full h-[500px] bg-void/[0.96] relative overflow-hidden rounded-2xl border-steel/20 shadow-[0_30px_80px_-20px_rgba(28,28,30,0.3),0_10px_40px_-10px_rgba(255,140,0,0.08)]">
-                <Spotlight
-                  className="-top-40 left-0 md:left-60 md:-top-20"
-                  fill="white"
+              <motion.div
+                animate={{ y: [0, -16, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="relative"
+              >
+                {/* Glow behind icon */}
+                <div
+                  className="absolute inset-0 z-0 rounded-[3rem] blur-3xl"
+                  style={{ background: "radial-gradient(circle, rgba(255,140,0,0.18) 0%, transparent 70%)" }}
+                  aria-hidden="true"
                 />
-
-                <div className="flex h-full">
-                  {/* Left content inside card */}
-                  <div className="flex-1 p-8 relative z-10 flex flex-col justify-center">
-                    <h2 className="text-3xl md:text-4xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-silver">
-                      Interactive 3D
-                    </h2>
-                    <p className="mt-4 font-body text-sm text-silver max-w-[200px] leading-relaxed">
-                      Explore the future of driver matching with immersive AI-powered experiences.
-                    </p>
-                  </div>
-
-                  {/* Right: Spline 3D scene */}
-                  <div className="flex-1 relative">
-                    <SplineScene
-                      scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                      className="w-full h-full"
-                    />
-                  </div>
-                </div>
-              </CardGlass>
+                <Image
+                  src="/jor-icon.webp"
+                  alt="JOR App Icon"
+                  width={420}
+                  height={420}
+                  priority
+                  className="relative z-10 drop-shadow-[0_30px_60px_rgba(28,28,30,0.35)]"
+                />
+              </motion.div>
             </motion.div>
           </div>
         </div>
