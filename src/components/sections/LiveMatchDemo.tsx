@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { fadeUp } from "@/lib/animations";
 import { ShaderMesh } from "@/components/ui/shader-gradient";
+import { FloatingBlob } from "@/components/effects/FloatingBlob";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -383,6 +384,12 @@ export function LiveMatchDemo() {
       aria-labelledby="demo-headline"
     >
       <ShaderMesh variant="light" />
+      <FloatingBlob
+        className="bottom-[10%] right-[-8%]"
+        color="rgba(255,140,0,0.04)"
+        size="350px"
+        delay="-5s"
+      />
 
       {/* Glow backdrop */}
       <div

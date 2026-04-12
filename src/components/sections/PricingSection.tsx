@@ -4,6 +4,8 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Check, Zap } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { BackgroundPaths } from "@/components/ui/background-paths";
+import { FloatingBlob } from "@/components/effects/FloatingBlob";
 
 const FLEET_FEATURES = [
   "Post a job in under 2 minutes",
@@ -96,7 +98,7 @@ export function PricingSection() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-cream py-24 lg:py-32"
+      className="relative overflow-hidden bg-offwhite py-24 lg:py-32"
       aria-label="Pricing"
     >
       {/* Subtle top border */}
@@ -108,8 +110,15 @@ export function PricingSection() {
         }}
         aria-hidden="true"
       />
+      <BackgroundPaths className="absolute inset-0 opacity-20" color="text-ember" />
+      <FloatingBlob
+        className="top-[30%] left-[-10%]"
+        color="rgba(255,140,0,0.04)"
+        size="400px"
+        delay="-4s"
+      />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -159,7 +159,7 @@ export function Footer() {
   return (
     <footer
       className="relative w-full"
-      style={{ background: "#EDE9E3" }}
+      style={{ background: "#F5F3EF" }}
       aria-label="Site footer"
     >
       {/* Top gradient border: transparent → ember → transparent */}

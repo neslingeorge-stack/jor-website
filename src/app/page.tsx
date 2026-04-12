@@ -6,6 +6,9 @@ import { Hero } from "@/components/sections/Hero";
 const SocialProofBar = dynamic(
   () => import("@/components/sections/SocialProofBar").then((m) => m.SocialProofBar),
 );
+const VideoHeroSection = dynamic(
+  () => import("@/components/ui/hero-landing-page").then((m) => m.VideoHeroSection),
+);
 const ProblemStatement = dynamic(
   () => import("@/components/sections/ProblemStatement").then((m) => m.ProblemStatement),
 );
@@ -44,6 +47,7 @@ export default function Home() {
       <main>
         <Hero />
         <SocialProofBar />
+        <VideoHeroSection />
         <ProblemStatement />
         <HowItWorks />
         <section id="live-demo">

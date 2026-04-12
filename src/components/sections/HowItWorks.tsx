@@ -7,6 +7,8 @@ import { HOW_IT_WORKS_STEPS } from "@/lib/constants";
 import { fadeUp } from "@/lib/animations";
 import { cn } from "@/lib/utils";
 import { ShaderWireframe } from "@/components/ui/shader-gradient";
+import { BackgroundPaths } from "@/components/ui/background-paths";
+import { FloatingBlob } from "@/components/effects/FloatingBlob";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -370,7 +372,7 @@ export function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="relative bg-cream py-24 lg:py-32 overflow-hidden"
+      className="relative bg-offwhite py-24 lg:py-32 overflow-hidden"
       aria-labelledby="hiw-headline"
     >
       {/* Subtle grid texture */}
@@ -385,6 +387,19 @@ export function HowItWorks() {
       />
 
       <ShaderWireframe />
+      <BackgroundPaths className="absolute inset-0 opacity-30" color="text-ember" />
+      <FloatingBlob
+        className="top-[10%] right-[-8%]"
+        color="rgba(255,140,0,0.04)"
+        size="400px"
+        delay="0s"
+      />
+      <FloatingBlob
+        className="bottom-[5%] left-[-5%]"
+        color="rgba(245,166,35,0.03)"
+        size="350px"
+        delay="-6s"
+      />
 
       <div className="relative mx-auto max-w-6xl px-6 lg:px-10">
         {/* Headline */}

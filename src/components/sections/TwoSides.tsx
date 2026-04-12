@@ -35,7 +35,7 @@ function Panel({ side, features }: PanelProps) {
   const tagColor = isFleet ? "text-ember" : "text-verified";
   const checkColor = isFleet ? "text-ember" : "text-verified";
   const calloutBorder = isFleet ? "border-ember/30" : "border-verified/30";
-  const bg = isFleet ? "bg-white" : "bg-cream";
+  const bg = isFleet ? "bg-offwhite" : "bg-cream";
 
   const tag = isFleet ? "FOR FLEET OWNERS" : "FOR DRIVERS";
   const heading = isFleet

@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { Check } from "lucide-react";
 import { PHASES } from "@/lib/constants";
 import { RoadGridBg } from "@/components/effects/RoadGridBg";
+import { FloatingBlob } from "@/components/effects/FloatingBlob";
 
 const CARD_FADE_UP = {
   initial: { opacity: 0, y: 40 },
@@ -181,6 +182,18 @@ export function EcosystemRoadmap() {
     >
       {/* Background */}
       <RoadGridBg className="opacity-[0.04]" />
+      <FloatingBlob
+        className="top-[15%] right-[-12%]"
+        color="rgba(255,107,0,0.04)"
+        size="450px"
+        delay="-3s"
+      />
+      <FloatingBlob
+        className="bottom-[20%] left-[-8%]"
+        color="rgba(255,140,0,0.03)"
+        size="350px"
+        delay="-9s"
+      />
 
       {/* Subtle radial fade at edges */}
       <div

@@ -6,6 +6,8 @@ import { Truck, CheckCircle, Lock } from "lucide-react";
 import { GlowOrb } from "@/components/effects/GlowOrb";
 import { RoadGridBg } from "@/components/effects/RoadGridBg";
 import { NoiseTexture } from "@/components/effects/NoiseTexture";
+import { BackgroundPaths } from "@/components/ui/background-paths";
+import { FloatingBlob } from "@/components/effects/FloatingBlob";
 import { Badge } from "@/components/ui/Badge";
 import { LivePulse } from "@/components/ui/LivePulse";
 import { Button } from "@/components/ui/Button";
@@ -319,6 +321,13 @@ export function WaitlistCTA() {
       {/* Background layers */}
       <RoadGridBg />
       <NoiseTexture opacity="0.04" />
+      <BackgroundPaths className="absolute inset-0 opacity-25" color="text-ember" />
+      <FloatingBlob
+        className="top-[10%] right-[-10%]"
+        color="rgba(255,140,0,0.05)"
+        size="500px"
+        delay="-1s"
+      />
 
       {/* Large ember glow orb behind content */}
       <GlowOrb

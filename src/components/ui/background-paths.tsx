@@ -2,7 +2,13 @@
 
 import { motion } from "framer-motion";
 
-function FloatingPaths({ position }: { position: number }) {
+function FloatingPaths({
+  position,
+  color = "text-ink",
+}: {
+  position: number;
+  color?: string;
+}) {
   const paths = Array.from({ length: 36 }, (_, i) => ({
     id: i,
     d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
@@ -18,7 +24,7 @@ function FloatingPaths({ position }: { position: number }) {
   return (
     <div className="absolute inset-0 pointer-events-none">
       <svg
-        className="w-full h-full text-ink dark:text-white"
+        className={`w-full h-full ${color}`}
         viewBox="0 0 696 316"
         fill="none"
       >
@@ -29,11 +35,11 @@ function FloatingPaths({ position }: { position: number }) {
             d={path.d}
             stroke="currentColor"
             strokeWidth={path.width}
-            strokeOpacity={0.1 + path.id * 0.03}
-            initial={{ pathLength: 0.3, opacity: 0.6 }}
+            strokeOpacity={0.05 + path.id * 0.02}
+            initial={{ pathLength: 0.3, opacity: 0.4 }}
             animate={{
               pathLength: 1,
-              opacity: [0.3, 0.6, 0.3],
+              opacity: [0.2, 0.4, 0.2],
               pathOffset: [0, 1, 0],
             }}
             transition={{
@@ -48,11 +54,17 @@ function FloatingPaths({ position }: { position: number }) {
   );
 }
 
-export function BackgroundPaths({ className }: { className?: string }) {
+export function BackgroundPaths({
+  className,
+  color,
+}: {
+  className?: string;
+  color?: string;
+}) {
   return (
     <div className={className}>
-      <FloatingPaths position={1} />
-      <FloatingPaths position={-1} />
+      <FloatingPaths position={1} color={color} />
+      <FloatingPaths position={-1} color={color} />
     </div>
   );
 }

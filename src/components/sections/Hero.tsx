@@ -186,23 +186,35 @@ export function Hero() {
               className="hidden lg:flex items-center justify-center"
             >
               <motion.div
-                animate={{ y: [0, -16, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="relative"
+                animate={{
+                  y: [0, -16, 0],
+                  rotateY: [0, 3, 0, -3, 0],
+                  rotateX: [0, -2, 0, 2, 0],
+                }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="relative perspective-container"
+                style={{ transformStyle: "preserve-3d" }}
               >
-                {/* Glow behind icon */}
-                <div
-                  className="absolute inset-0 z-0 rounded-[3rem] blur-3xl"
-                  style={{ background: "radial-gradient(circle, rgba(255,140,0,0.18) 0%, transparent 70%)" }}
+                {/* Animated glow ring */}
+                <motion.div
+                  className="absolute -inset-8 z-0 rounded-[4rem]"
+                  animate={{
+                    boxShadow: [
+                      "0 0 60px 20px rgba(255,140,0,0.08), 0 0 120px 40px rgba(255,140,0,0.04)",
+                      "0 0 80px 30px rgba(255,140,0,0.12), 0 0 160px 60px rgba(255,140,0,0.06)",
+                      "0 0 60px 20px rgba(255,140,0,0.08), 0 0 120px 40px rgba(255,140,0,0.04)",
+                    ],
+                  }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                   aria-hidden="true"
                 />
                 <Image
                   src="/jor-icon.webp"
                   alt="JOR App Icon"
-                  width={420}
-                  height={420}
+                  width={360}
+                  height={360}
                   priority
-                  className="relative z-10 drop-shadow-[0_30px_60px_rgba(28,28,30,0.35)]"
+                  className="relative z-10 drop-shadow-[0_30px_60px_rgba(28,28,30,0.3)]"
                 />
               </motion.div>
             </motion.div>
