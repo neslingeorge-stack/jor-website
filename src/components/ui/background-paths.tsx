@@ -1,7 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
+/**
+ * Lightweight animated SVG paths — uses CSS animations instead of framer-motion.
+ * Reduced from 36 to 10 paths for performance.
+ */
 function FloatingPaths({
   position,
   color = "text-ink",
@@ -9,43 +13,40 @@ function FloatingPaths({
   position: number;
   color?: string;
 }) {
-  const paths = Array.from({ length: 36 }, (_, i) => ({
+  const paths = Array.from({ length: 10 }, (_, i) => ({
     id: i,
-    d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
-      380 - i * 5 * position
-    } -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${
-      152 - i * 5 * position
-    } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
-      684 - i * 5 * position
-    } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-    width: 0.5 + i * 0.03,
+    d: `M-${380 - i * 18 * position} -${189 + i * 22}C-${
+      380 - i * 18 * position
+    } -${189 + i * 22} -${312 - i * 18 * position} ${216 - i * 22} ${
+      152 - i * 18 * position
+    } ${343 - i * 22}C${616 - i * 18 * position} ${470 - i * 22} ${
+      684 - i * 18 * position
+    } ${875 - i * 22} ${684 - i * 18 * position} ${875 - i * 22}`,
+    width: 0.5 + i * 0.08,
+    opacity: 0.04 + i * 0.02,
+    duration: 25 + i * 5,
   }));
 
   return (
     <div className="absolute inset-0 pointer-events-none">
       <svg
-        className={`w-full h-full ${color}`}
+        className={cn("w-full h-full", color)}
         viewBox="0 0 696 316"
         fill="none"
       >
         <title>Background Paths</title>
         {paths.map((path) => (
-          <motion.path
+          <path
             key={path.id}
             d={path.d}
             stroke="currentColor"
             strokeWidth={path.width}
-            strokeOpacity={0.05 + path.id * 0.02}
-            initial={{ pathLength: 0.3, opacity: 0.4 }}
-            animate={{
-              pathLength: 1,
-              opacity: [0.2, 0.4, 0.2],
-              pathOffset: [0, 1, 0],
-            }}
-            transition={{
-              duration: 20 + Math.random() * 10,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "linear",
+            strokeOpacity={path.opacity}
+            strokeDasharray="8 12"
+            className="animate-flow-path"
+            style={{
+              animationDuration: `${path.duration}s`,
+              animationDelay: `${-path.id * 2}s`,
             }}
           />
         ))}

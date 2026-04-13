@@ -1,113 +1,77 @@
 "use client";
 
-import { MeshGradient, PulsingBorder } from "@paper-design/shaders-react";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 /**
- * Mesh gradient background — warm JOR brand tones.
- * Use as an absolute-positioned layer behind section content.
+ * Lightweight CSS mesh gradient — replaces heavy WebGL @paper-design/shaders-react.
+ * Uses layered radial gradients with CSS animation for a similar visual effect.
  */
 export function ShaderMesh({
   className,
   variant = "warm",
-  speed = 0.25,
 }: {
   className?: string;
   variant?: "warm" | "cool" | "dark" | "light";
-  speed?: number;
 }) {
-  const colorSets: Record<string, string[]> = {
-    warm: ["#F5F3EF", "#FF8C00", "#F5A623", "#EDE9E3", "#FF6B00"],
-    cool: ["#F5F3EF", "#3B82F6", "#10B981", "#EDE9E3", "#06b6d4"],
-    dark: ["#1C1C1E", "#FF8C00", "#2A2A2E", "#333338", "#FF6B00"],
-    light: ["#FAFAFA", "#FF8C00", "#F5F3EF", "#EDE9E3", "#F5A623"],
+  const gradients: Record<string, string> = {
+    warm: "radial-gradient(ellipse at 20% 30%, rgba(255,140,0,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(245,166,35,0.05) 0%, transparent 50%), radial-gradient(ellipse at 50% 80%, rgba(255,107,0,0.04) 0%, transparent 50%)",
+    cool: "radial-gradient(ellipse at 20% 30%, rgba(59,130,246,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(16,185,129,0.05) 0%, transparent 50%)",
+    dark: "radial-gradient(ellipse at 30% 40%, rgba(255,140,0,0.08) 0%, transparent 50%), radial-gradient(ellipse at 70% 60%, rgba(42,42,46,0.3) 0%, transparent 50%)",
+    light: "radial-gradient(ellipse at 30% 30%, rgba(255,140,0,0.05) 0%, transparent 50%), radial-gradient(ellipse at 70% 70%, rgba(245,166,35,0.04) 0%, transparent 50%)",
   };
 
   return (
-    <div className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}>
-      <MeshGradient
-        className="absolute inset-0 w-full h-full opacity-40"
-        colors={colorSets[variant]}
-        speed={speed}
-      />
-    </div>
+    <div
+      className={cn("pointer-events-none absolute inset-0 overflow-hidden animate-gradient-mesh", className)}
+      style={{ background: gradients[variant] }}
+      aria-hidden="true"
+    />
   );
 }
 
 /**
- * Wireframe mesh overlay — subtle animated wireframe grid.
+ * Lightweight CSS wireframe overlay — subtle grid pattern with gentle animation.
  */
-export function ShaderWireframe({
-  className,
-  speed = 0.15,
-}: {
-  className?: string;
-  speed?: number;
-}) {
+export function ShaderWireframe({ className }: { className?: string }) {
   return (
-    <div className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}>
-      <MeshGradient
-        className="absolute inset-0 w-full h-full opacity-15"
-        colors={["#F5F3EF", "#44444A", "#A8A8A8", "#666666"]}
-        speed={speed}
-        distortion={0.3}
-      />
-    </div>
+    <div
+      className={cn("pointer-events-none absolute inset-0 overflow-hidden opacity-[0.03]", className)}
+      style={{
+        backgroundImage:
+          "linear-gradient(rgba(68,68,74,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(68,68,74,0.3) 1px, transparent 1px)",
+        backgroundSize: "80px 80px",
+      }}
+      aria-hidden="true"
+    />
   );
 }
 
 /**
- * Pulsing border circle — decorative accent element.
+ * Pulsing border circle — pure CSS replacement for WebGL PulsingBorder.
  */
 export function ShaderPulse({
   className,
   size = 80,
-  label,
 }: {
   className?: string;
   size?: number;
-  label?: string;
 }) {
   return (
-    <div className={cn("relative flex items-center justify-center", className)} style={{ width: size, height: size }}>
-      <PulsingBorder
-        colors={["#FF8C00", "#FF6B00", "#F5A623", "#10B981", "#3B82F6", "#FF8C00", "#ffffff"]}
-        colorBack="#00000000"
-        speed={1.2}
-        roundness={1}
-        thickness={0.1}
-        softness={0.2}
-        intensity={4}
-        spots={4}
-        spotSize={0.1}
-        pulse={0.1}
-        smoke={0.4}
-        smokeSize={3}
+    <div
+      className={cn("relative flex items-center justify-center", className)}
+      style={{ width: size, height: size }}
+    >
+      <div
+        className="rounded-full animate-pulse"
         style={{
           width: size * 0.75,
           height: size * 0.75,
-          borderRadius: "50%",
+          background: "conic-gradient(from 0deg, #FF8C00, #FF6B00, #F5A623, #10B981, #3B82F6, #FF8C00)",
+          opacity: 0.6,
+          filter: "blur(4px)",
         }}
+        aria-hidden="true"
       />
-      {label && (
-        <motion.svg
-          className="absolute inset-0 w-full h-full"
-          viewBox="0 0 100 100"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 25, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          style={{ transform: "scale(1.5)" }}
-        >
-          <defs>
-            <path id="pulse-circle" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
-          </defs>
-          <text className="fill-smoke font-heading text-[8px] uppercase tracking-[0.3em]">
-            <textPath href="#pulse-circle" startOffset="0%">
-              {label}
-            </textPath>
-          </text>
-        </motion.svg>
-      )}
     </div>
   );
 }

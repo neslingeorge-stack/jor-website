@@ -10,7 +10,6 @@ interface VideoHeroSectionProps {
   ctaLabel?: string;
   ctaSecondaryLabel?: string;
   stats?: { value: string; label: string }[];
-  videoSrc?: string;
 }
 
 const DEFAULT_STATS = [
@@ -24,7 +23,6 @@ export function VideoHeroSection({
   ctaLabel = "Get Started",
   ctaSecondaryLabel = "Learn more",
   stats = DEFAULT_STATS,
-  videoSrc = "https://mybycketvercelprojecttest.s3.sa-east-1.amazonaws.com/animation-bg.mp4",
 }: VideoHeroSectionProps) {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
@@ -32,27 +30,26 @@ export function VideoHeroSection({
   return (
     <section
       ref={ref}
-      className="relative min-h-[70vh] w-full overflow-hidden flex items-end"
+      className="relative min-h-[60vh] w-full overflow-hidden flex items-end"
       aria-label="Video hero section"
     >
-      {/* Video Background */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        autoPlay
-        muted
-        loop
-        playsInline
-        style={{ filter: "brightness(0.4)" }}
-      >
-        <source src={videoSrc} type="video/mp4" />
-      </video>
+      {/* Animated gradient background (replaces heavy video) */}
+      <div
+        className="absolute inset-0 z-0 animate-gradient-mesh"
+        style={{
+          background:
+            "linear-gradient(135deg, #1C1C1E 0%, #2A2A2E 25%, #1C1C1E 50%, #333338 75%, #1C1C1E 100%)",
+          backgroundSize: "400% 400%",
+        }}
+        aria-hidden="true"
+      />
 
       {/* Gradient overlays */}
       <div className="absolute inset-0 pointer-events-none z-[1]">
         <div className="absolute inset-0 bg-gradient-to-r from-[rgba(28,28,30,0.85)] via-[rgba(28,28,30,0.4)] to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(28,28,30,0.9)] via-transparent to-transparent" />
         {/* Orange accent glow */}
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-[rgba(255,140,0,0.1)] to-transparent" />
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-[rgba(255,140,0,0.08)] to-transparent" />
       </div>
 
       {/* Content */}

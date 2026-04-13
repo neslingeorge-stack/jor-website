@@ -17,7 +17,7 @@ import Image from "next/image";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 import { FloatingBlob } from "@/components/effects/FloatingBlob";
 import { GradientMesh } from "@/components/effects/GradientMesh";
-import { ParticleField } from "@/components/effects/ParticleField";
+// ParticleField removed for performance
 
 const TRUST_TAG_COLOR_MAP: Record<string, string> = {
   verified: "bg-verified/10 text-verified border-verified/20",
@@ -50,28 +50,15 @@ export function Hero() {
       {/* Animated flowing paths */}
       <BackgroundPaths className="absolute inset-0" />
 
-      {/* Floating morphing blobs */}
+      {/* Floating morphing blob */}
       <FloatingBlob
         className="top-[-10%] right-[-5%]"
         color="rgba(255,140,0,0.05)"
-        size="600px"
+        size="500px"
         delay="0s"
       />
-      <FloatingBlob
-        className="bottom-[-15%] left-[-10%]"
-        color="rgba(245,166,35,0.04)"
-        size="500px"
-        delay="-4s"
-      />
-      <FloatingBlob
-        className="top-[40%] left-[60%]"
-        color="rgba(255,107,0,0.03)"
-        size="300px"
-        delay="-8s"
-      />
 
-      {/* Particle network */}
-      <ParticleField color="rgba(255,140,0,0.5)" count={25} className="z-[1]" />
+      {/* Particle network removed for performance */}
 
       {/* Soft radial vignette */}
       <div

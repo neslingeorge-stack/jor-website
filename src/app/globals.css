@@ -106,6 +106,16 @@ body {
   100% { stroke-dashoffset: 0; opacity: 0.3; }
 }
 
+/* ── Background path flow (CSS animation, no JS) ── */
+@keyframes flow-path {
+  0% { stroke-dashoffset: 40; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.animate-flow-path {
+  animation: flow-path linear infinite;
+}
+
 /* ── Spotlight animation (Aceternity) ── */
 @keyframes spotlight {
   0% { opacity: 0; transform: translate(-72%, -62%) scale(0.5); }

@@ -4,7 +4,6 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Check, Zap } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { BackgroundPaths } from "@/components/ui/background-paths";
 import { FloatingBlob } from "@/components/effects/FloatingBlob";
 
 const FLEET_FEATURES = [
@@ -110,7 +109,6 @@ export function PricingSection() {
         }}
         aria-hidden="true"
       />
-      <BackgroundPaths className="absolute inset-0 opacity-20" color="text-ember" />
       <FloatingBlob
         className="top-[30%] left-[-10%]"
         color="rgba(255,140,0,0.04)"

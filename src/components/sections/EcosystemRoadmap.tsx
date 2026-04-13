@@ -185,14 +185,8 @@ export function EcosystemRoadmap() {
       <FloatingBlob
         className="top-[15%] right-[-12%]"
         color="rgba(255,107,0,0.04)"
-        size="450px"
+        size="400px"
         delay="-3s"
-      />
-      <FloatingBlob
-        className="bottom-[20%] left-[-8%]"
-        color="rgba(255,140,0,0.03)"
-        size="350px"
-        delay="-9s"
       />
 
       {/* Subtle radial fade at edges */}

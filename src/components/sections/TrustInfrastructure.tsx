@@ -7,7 +7,6 @@ import type { LucideIcon } from "lucide-react";
 import { TRUST_PILLARS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { fadeUp, staggerContainer } from "@/lib/animations";
-import { BackgroundPaths } from "@/components/ui/background-paths";
 import { FloatingBlob } from "@/components/effects/FloatingBlob";
 
 type PillarColor = "ember" | "info" | "amber" | "verified";
@@ -68,18 +67,11 @@ export function TrustInfrastructure() {
           "linear-gradient(160deg, var(--color-offwhite) 0%, var(--color-offwhite) 100%)",
       }}
     >
-      <BackgroundPaths className="absolute inset-0 opacity-20" color="text-steel" />
       <FloatingBlob
         className="top-[20%] left-[-10%]"
         color="rgba(59,130,246,0.03)"
         size="400px"
         delay="-2s"
-      />
-      <FloatingBlob
-        className="bottom-[10%] right-[-8%]"
-        color="rgba(16,185,129,0.03)"
-        size="350px"
-        delay="-7s"
       />
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-24 lg:px-8 lg:py-32">
         {/* Header */}
