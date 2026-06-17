@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "For Fleet Owners | JOR",
@@ -27,13 +28,13 @@ export default function FleetPage() {
             commission — transparent, fixed, no hidden fees.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <a
+            <Link
               href="/#waitlist"
               className="inline-flex items-center gap-2 rounded-lg bg-ember px-8 py-4 font-heading text-base font-bold text-void transition-all hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(255,140,0,0.3)]"
             >
               Post Your First Job Free
               <span aria-hidden="true">&rarr;</span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>

@@ -39,6 +39,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://jor.in"
+  ),
   title: {
     default: "JOR — Just On Road | India's Driver Matching Engine",
     template: "%s | JOR",

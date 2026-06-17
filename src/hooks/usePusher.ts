@@ -9,7 +9,13 @@ export function usePusherChannel(
   handler: (data: unknown) => void
 ) {
   const handlerRef = useRef(handler);
-  handlerRef.current = handler;
+
+  // Keep the latest handler in a ref without re-subscribing. Writing to the
+  // ref inside an effect (rather than during render) avoids accessing the ref
+  // during render, which React flags as it can desync from the committed UI.
+  useEffect(() => {
+    handlerRef.current = handler;
+  }, [handler]);
 
   useEffect(() => {
     const client = getPusherClient();

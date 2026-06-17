@@ -70,9 +70,9 @@ export function ProblemStatement() {
             className="font-display font-black uppercase leading-[0.9] tracking-tight"
             style={{ fontSize: "var(--text-display-lg)" }}
           >
-            <span className="text-ink">INDIA'S TRUCKS ARE READY.</span>
+            <span className="text-ink">INDIA&apos;S TRUCKS ARE READY.</span>
             <br />
-            <span className="text-ember">THE DRIVERS AREN'T.</span>
+            <span className="text-ember">THE DRIVERS AREN&apos;T.</span>
           </h2>
         </motion.div>
 
@@ -83,7 +83,7 @@ export function ProblemStatement() {
           transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto mb-20 max-w-2xl text-center font-body text-lg leading-relaxed text-smoke"
         >
-          India's commercial transport sector is paralysed by a structural driver
+          India&apos;s commercial transport sector is paralysed by a structural driver
           shortage. Every idle truck is a loss. Every delayed shipment is a
           broken promise. JOR is the fix.
         </motion.p>

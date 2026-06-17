@@ -49,11 +49,11 @@ const dropdownVariants: Variants = {
 };
 
 interface DropdownMenuProps {
-  children: readonly NavChild[];
+  items: readonly NavChild[];
   isOpen: boolean;
 }
 
-function DropdownMenu({ children, isOpen }: DropdownMenuProps) {
+function DropdownMenu({ items, isOpen }: DropdownMenuProps) {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -65,7 +65,7 @@ function DropdownMenu({ children, isOpen }: DropdownMenuProps) {
           className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-52 rounded-xl border border-steel/20 bg-offwhite/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] overflow-hidden"
         >
           <div className="py-1.5">
-            {children.map((child) => (
+            {items.map((child) => (
               <Link
                 key={child.label}
                 href={child.href}
@@ -126,7 +126,7 @@ function DesktopNavItem({ link, isActive }: DesktopNavItemProps) {
             )}
           />
         </button>
-        <DropdownMenu children={link.children} isOpen={dropdownOpen} />
+        <DropdownMenu items={link.children} isOpen={dropdownOpen} />
       </div>
     );
   }
@@ -157,6 +157,17 @@ export function NavBar() {
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const pathname = usePathname();
 
+  // Reset the mobile menu when navigation occurs. Adjusting state during
+  // render (rather than in an effect) is the React-recommended pattern for
+  // resetting state in response to a changed value, and avoids a cascading
+  // re-render. See https://react.dev/learn/you-might-not-need-an-effect
+  const [lastPathname, setLastPathname] = useState(pathname);
+  if (pathname !== lastPathname) {
+    setLastPathname(pathname);
+    setMobileOpen(false);
+    setMobileDropdownOpen(false);
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > SCROLL_THRESHOLD);
@@ -166,11 +177,6 @@ export function NavBar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    setMobileOpen(false);
-    setMobileDropdownOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     if (mobileOpen) {
