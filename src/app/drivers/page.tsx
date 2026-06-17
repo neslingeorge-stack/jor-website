@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "For Drivers | JOR",
@@ -27,13 +28,13 @@ export default function DriversPage() {
             Free to join — forever.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <a
+            <Link
               href="/#waitlist"
               className="inline-flex items-center gap-2 rounded-lg bg-verified px-8 py-4 font-heading text-base font-bold text-void transition-all hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(16,185,129,0.3)]"
             >
               Join as a Driver — It&apos;s Free
               <span aria-hidden="true">&rarr;</span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>

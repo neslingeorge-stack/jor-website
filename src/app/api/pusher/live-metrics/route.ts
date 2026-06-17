@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { pusherServer } from "@/lib/pusher-server";
+import { getPusherServer } from "@/lib/pusher-server";
 
 export async function POST() {
   try {
@@ -10,7 +10,7 @@ export async function POST() {
       successRate: (Math.random() * 2 + 97).toFixed(1),
       timestamp: Date.now(),
     };
-    await pusherServer.trigger("jor-live", "metrics-update", metrics);
+    await getPusherServer().trigger("jor-live", "metrics-update", metrics);
     return NextResponse.json(metrics);
   } catch {
     return NextResponse.json(
