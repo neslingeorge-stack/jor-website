@@ -9,6 +9,14 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # Expose deploy secrets as job-level env so steps can detect whether
+    # Vercel is configured and skip deploying when it is not. This keeps a
+    # missing token from failing CI and prevents a half-configured deploy
+    # from ever running against live infrastructure.
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     steps:
       - uses: actions/checkout@v4
 
@@ -35,16 +43,17 @@ jobs:
           PUSHER_APP_ID: ${{ secrets.PUSHER_APP_ID }}
           PUSHER_SECRET: ${{ secrets.PUSHER_SECRET }}
 
+      # Deploy steps only run when a Vercel token is configured. Without it
+      # they are skipped (not failed), so CI never blocks on missing secrets
+      # and no live operation is disrupted by an unconfigured deploy.
       - name: Deploy to Vercel (Production)
-        if: github.ref == 'refs/heads/main'
-        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        if: github.ref == 'refs/heads/main' && env.VERCEL_TOKEN != ''
+        run: npx vercel --prod --token="$VERCEL_TOKEN"
 
       - name: Deploy Preview (PRs)
-        if: github.event_name == 'pull_request'
-        run: npx vercel --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        if: github.event_name == 'pull_request' && env.VERCEL_TOKEN != ''
+        run: npx vercel --token="$VERCEL_TOKEN"
+
+      - name: Vercel deploy skipped (no token configured)
+        if: env.VERCEL_TOKEN == ''
+        run: echo "VERCEL_TOKEN not set — skipping Vercel deploy. Configure repository secrets to enable deploys."
